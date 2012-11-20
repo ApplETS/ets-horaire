@@ -24,7 +24,7 @@ describe ConditionalCombinator do
       let(:combinations) { ConditionalCombinator::find_combinations([1, 2, 3, 4], 0) { true } }
 
       it "should find no possible combinations" do
-        combinations.should match_arrays
+        combinations.should be_empty
       end
     end
   end
@@ -33,7 +33,7 @@ describe ConditionalCombinator do
     let(:combinations) { ConditionalCombinator::find_combinations([1, 2, 3, 4], 2) { false } }
 
     it "should always return no possible combinations" do
-      combinations.should match_arrays
+      combinations.should be_empty
     end
   end
 
@@ -64,7 +64,7 @@ describe ConditionalCombinator do
     end
 
     it "should find no possible combinations of 0" do
-      find_concrete_objects_combinations(concrete_objects, 0).should match_arrays
+      find_concrete_objects_combinations(concrete_objects, 0).should be_empty
     end
 
     it "should find all possible combinations of 1" do
@@ -88,7 +88,7 @@ describe ConditionalCombinator do
     end
 
     it "should find all possible combinations of 4" do
-      find_concrete_objects_combinations(concrete_objects, 4).should match_arrays
+      find_concrete_objects_combinations(concrete_objects, 4).should be_empty
     end
   end
 
@@ -109,7 +109,7 @@ describe ConditionalCombinator do
     end
 
     it "should find no possible combinations of 0" do
-      find_concrete_objects_combinations(concrete_objects, 0).should match_arrays
+      find_concrete_objects_combinations(concrete_objects, 0).should be_empty
     end
 
     it "should find all possible combinations of 1" do
@@ -142,11 +142,11 @@ describe ConditionalCombinator do
     end
 
     it "should find all possible combinations of 4" do
-      find_concrete_objects_combinations(concrete_objects, 4).should match_arrays
+      find_concrete_objects_combinations(concrete_objects, 4).should be_empty
     end
 
     it "should find all possible combinations of 5" do
-      find_concrete_objects_combinations(concrete_objects, 5).should match_arrays
+      find_concrete_objects_combinations(concrete_objects, 5).should be_empty
     end
   end
 

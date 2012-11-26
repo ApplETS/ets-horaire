@@ -1,5 +1,7 @@
 *.gem
 *.rbc
+.idea
+.rvmrc
 .bundle
 .config
 coverage

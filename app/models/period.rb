@@ -1,6 +1,7 @@
 class Period
   
-  WEEKDAYS_INT = Hash[*%w(monday tuesday wednesday thursday friday saturday sunday).each_with_index.collect { |weekday, index| [weekday, index] }.flatten]
+  WEEKDAYS = %w(monday tuesday wednesday thursday friday saturday sunday)
+  WEEKDAYS_INT = Hash[*WEEKDAYS.each_with_index.collect { |weekday, index| [weekday, index] }.flatten]
   
   MINUTES_PER_DAY = 1440
   MINUTES_PER_HOUR = 60

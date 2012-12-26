@@ -4,6 +4,7 @@ class Group
 
   def initialize(nb)
     @nb = nb
+    @periods = []
   end
 
   def with(*periods)

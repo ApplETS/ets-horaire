@@ -1,4 +1,4 @@
-class PrettyEtsScheduleWriter
+class PrettyScheduleWriter
 
   def self.convert(input_filename, output_filename)
     File.open(output_filename, 'w') do |file|

@@ -2,7 +2,7 @@ CourseStruct = Struct.new(:name, :groups)
 GroupStruct = Struct.new(:nb, :periods)
 PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type)
 
-class EtsPdfScheduleParser
+class PdfScheduleParser
 
 	COURSE_REGEX = /^\f?(\w{3}\d{3})/i
 	GROUP_REGEX = /^\f?\s*(\d{1,2})\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i

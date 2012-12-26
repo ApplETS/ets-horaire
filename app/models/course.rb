@@ -4,6 +4,7 @@ class Course
 
   def initialize(name)
     @name = name
+    @groups = []
   end
 
   def with(*groups)

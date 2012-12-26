@@ -1,4 +1,4 @@
-require_relative "spec_helper"
+require_relative "support/matchers/combination_matchers"
 require_relative "../app/conditional_combinator"
 
 describe ConditionalCombinator do

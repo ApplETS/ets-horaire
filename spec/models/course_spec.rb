@@ -1,15 +1,18 @@
-require_relative "../spec_helper"
 require_relative "../../app/models/period"
 require_relative "../../app/models/course"
 require_relative "../../app/models/group"
 
 describe Course do
 
-  describe "when creating a course" do
+  describe "when creating a course with no group" do
     let(:course) { Course.new("LOG640") }
 
     it "should retain its name" do
       course.name.should == "LOG640"
+    end
+
+    it "should have no groups" do
+      course.groups.should be_empty
     end
   end
 

@@ -156,7 +156,7 @@ private
 
 def find_concrete_objects_combinations(concrete_objects, set_size)
   ConditionalCombinator::find_combinations(concrete_objects, set_size) do |concrete_objects_stack, concrete_object|
-    concrete_objects_stack.index { |comparable_concrete_object| concrete_object.conflicts_with? comparable_concrete_object }.nil?
+    concrete_objects_stack.none? { |comparable_concrete_object| concrete_object.conflicts_with? comparable_concrete_object }
   end
 end
 
@@ -171,7 +171,7 @@ class ConcreteObject
   end
 
   def conflicts_with?(concrete_object)
-    !@conflicting_objects.index { |conflicting_object| conflicting_object == concrete_object }.nil?
+    @conflicting_objects.any? { |conflicting_object| conflicting_object == concrete_object }
   end
 
   def inspect

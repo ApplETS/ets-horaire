@@ -13,20 +13,14 @@ class Course
     self
   end
 
-  def conflicts?(course)
-    !@groups.index do |group|
-      !course.groups.index { |comparable_group| group.conflicts?(comparable_group) }.nil?
-    end.nil?
-  end
-
   private
 
   def unique_group_nb?(groups)
-    groups.index do |group|
+    groups.none? do |group|
       groups_duplicate = groups.dup
       groups_duplicate.delete(group)
-      !groups_duplicate.index { |group_duplicate| group.nb == group_duplicate.nb }.nil?
-    end.nil?
+      groups_duplicate.any? { |group_duplicate| group.nb == group_duplicate.nb }
+    end
   end
 
 end

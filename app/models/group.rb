@@ -12,10 +12,4 @@ class Group
     self
   end
 
-  def conflicts?(group)
-    !@periods.index do |period|
-      !group.periods.index { |comparable_period| period.conflicts?(comparable_period) }.nil?
-    end.nil?
-  end
-
 end

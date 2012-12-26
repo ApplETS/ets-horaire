@@ -65,17 +65,17 @@ describe Course do
     end
 
     describe "when comparing two conflicting courses" do
-      let(:period_1_1_1) { Period::on("monday").from("15h00").to("17h00") }
+      let(:conflicting_period_1_1_1) { Period::on("monday").from("15h00").to("17h00") }
       let(:period_1_1_2) { Period::on("friday").from("9h00").to("12h00") }
-      let(:group_1_1) { Group.new(1).with(period_1_1_1, period_1_1_2) }
+      let(:group_1_1) { Group.new(1).with(conflicting_period_1_1_1, period_1_1_2) }
       let(:period_1_2_1) { Period::on("wednesday").from("11h00").to("12h00") }
       let(:period_1_2_2) { Period::on("friday").from("12h01").to("17h00") }
       let(:group_1_2) { Group.new(2).with(period_1_2_1, period_1_2_2) }
       let(:course_1) { Course.new("LOG640").with(group_1_1, group_1_2) }
 
-      let(:period_2_1_1) { Period::on("monday").from("17h00").to("17h02") }
+      let(:conflicting_period_2_1_1) { Period::on("monday").from("16h00").to("17h02") }
       let(:period_2_1_2) { Period::on("thursday").from("9h00").to("12h00") }
-      let(:group_2_1) { Group.new(1).with(period_2_1_1, period_2_1_2) }
+      let(:group_2_1) { Group.new(1).with(conflicting_period_2_1_1, period_2_1_2) }
       let(:period_2_2_1) { Period::on("friday").from("6h00").to("8h59") }
       let(:period_2_2_2) { Period::on("friday").from("17h01").to("18h00") }
       let(:group_2_2) { Group.new(2).with(period_2_2_1, period_2_2_2) }

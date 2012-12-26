@@ -6,7 +6,11 @@ describe Period do
     let(:period_on_monday) { Period::on "monday" }
 
     it "should return the appropriate int value" do
-      period_on_monday.from_time.should == 0
+      period_on_monday.start_time_int.should == 0
+    end
+
+    it "shoud return monday as the weekday" do
+      period_on_monday.weekday.should == "monday"
     end
   end
 
@@ -14,7 +18,11 @@ describe Period do
     let(:period_on_tuesday) { Period::on "tuesday" }
 
     it "should return the appropriate int value" do
-      period_on_tuesday.to_time.should == 1440
+      period_on_tuesday.end_time_int.should == 1440
+    end
+
+    it "shoud return monday as the weekday" do
+      period_on_tuesday.weekday.should == "tuesday"
     end
   end
 
@@ -22,11 +30,23 @@ describe Period do
     let(:period_on_friday) { Period::on("friday").from("5h00").to("13h00") }
 
     it "should return the appropriate from int value" do
-      period_on_friday.from_time.should == 6060
+      period_on_friday.start_time_int.should == 6060
     end
 
     it "should return the appropriate to int value" do
-      period_on_friday.to_time.should == 6540
+      period_on_friday.end_time_int.should == 6540
+    end
+
+    it "shoud return monday as the weekday" do
+      period_on_friday.weekday.should == "friday"
+    end
+
+    it "should return 5h00 as the start time" do
+      period_on_friday.start_time.should == "5h00"
+    end
+
+    it "should return 13h00 as the start time" do
+      period_on_friday.end_time.should == "13h00"
     end
   end
 

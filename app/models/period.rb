@@ -2,11 +2,14 @@ class Period
   
   WEEKDAYS = %w(monday tuesday wednesday thursday friday saturday sunday)
   WEEKDAYS_INT = Hash[*WEEKDAYS.each_with_index.collect { |weekday, index| [weekday, index] }.flatten]
-  
-  MINUTES_PER_DAY = 1440
+
   MINUTES_PER_HOUR = 60
+  MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
+
+  attr_reader :weekday, :start_time, :end_time
 
   def initialize(weekday)
+    @weekday = weekday
     @weekday_minutes = WEEKDAYS_INT[weekday.downcase] * MINUTES_PER_DAY
     @from_minutes = 0
     @to_minutes = 0
@@ -17,20 +20,22 @@ class Period
   end
 
   def from(time)
+    @start_time = time
     @from_minutes = plain_time_to_int(time)
     self
   end
 
   def to(time)
+    @end_time = time
     @to_minutes = plain_time_to_int(time)
     self
   end
 
-  def from_time
+  def start_time_int
     @weekday_minutes + @from_minutes
   end
 
-  def to_time
+  def end_time_int
     @weekday_minutes + @to_minutes
   end
 
@@ -46,11 +51,11 @@ class Period
   end
 
   def before?(period)
-    period.from_time < from_time && period.from_time < to_time && period.to_time < from_time && period.to_time < to_time
+    period.start_time_int < start_time_int && period.start_time_int < end_time_int && period.end_time_int < start_time_int && period.end_time_int < end_time_int
   end
 
   def after?(period)
-    period.from_time > from_time && period.from_time > to_time && period.to_time > from_time && period.to_time > to_time
+    period.start_time_int > start_time_int && period.start_time_int > end_time_int && period.end_time_int > start_time_int && period.end_time_int > end_time_int
   end
 
 end

@@ -1,7 +1,7 @@
 require_relative "../../app/utils/course_utils"
 require_relative "../../app/models/course"
 
-CourseStruct = Struct.new(:name, :groups) if !defined?(CourseStruct)
+CourseStruct = Struct.new(:name, :groups)
 
 describe CourseUtils do
 

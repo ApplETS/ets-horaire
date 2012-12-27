@@ -1,5 +1,3 @@
-#TEST RAPIDE DE PROOF OF CONCEPT
-
 require_relative "app/utils/pdf_schedule_parser"
 require_relative "app/schedule_finder"
 require_relative "app/builders/course_builder"
@@ -17,7 +15,7 @@ schedules = ScheduleFinder.combinations_for(courses, 4)
 
 schedules.each do |schedule|
    puts "------------------"
-   schedule.each do |course|
-     puts "#{course.name}"
+   schedule.each do |group|
+     puts "#{group.course_name} - #{group.nb}"
    end
 end

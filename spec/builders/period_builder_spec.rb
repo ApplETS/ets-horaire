@@ -13,37 +13,28 @@ describe PeriodBuilder do
 
       describe "when building a period with \"#{short_fr_weekday}\" as a weekday" do
         let(:period_struct) { PeriodStruct.new short_fr_weekday, "0h00", "1h00", "TP" }
-        let(:period) { mock(Object) }
-
-        before(:each) do
-          period.stub!(:from).and_return(period)
-          period.stub!(:to)
-        end
+        let(:period) { PeriodBuilder.build period_struct }
 
         it "should build a period with the english weekday \"#{en_weekday}\"" do
-          Period.should_receive(:on).once.and_return(period)
+          period.weekday.should == en_weekday
         end
       end
     end
 
     describe "when building a period" do
       let(:period_struct) { PeriodStruct.new "mer", "16h00", "20h00", "Cours" }
-      let(:period) { mock(Object) }
+      let(:period) { PeriodBuilder.build period_struct }
 
-      before(:each) do
-        Period.stub!(:on).and_return(period)
-        period.stub!(:from).and_return(period)
-        period.stub!(:to)
+      it "should build the period with the Cours as the type" do
+        period.type.should == "Cours"
       end
 
       it "should build a period with the appropriate start time" do
-        period.should_receive(:from).once.with("16h00")
+        period.start_time.should == "16h00"
       end
 
       it "should build a period with the appropriate end time" do
-        period.should_receive(:to).once.with("20h00")
+        period.end_time.should == "20h00"
       end
     end
-
-    after(:each) { PeriodBuilder.build period_struct }
 end

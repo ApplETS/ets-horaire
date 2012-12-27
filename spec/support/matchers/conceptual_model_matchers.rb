@@ -32,6 +32,7 @@ end
 
 def period_conceptually_matches?(expected_period, actual_period)
   expected_period.weekday == actual_period.weekday &&
+  expected_period.type == actual_period.type &&
   expected_period.start_time == actual_period.start_time &&
   expected_period.end_time == actual_period.end_time
 end

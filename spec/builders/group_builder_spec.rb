@@ -44,6 +44,10 @@ describe GroupBuilder do
       period_1.weekday.should == "monday"
     end
 
+    it "should have its first period as a Cours type" do
+      period_1.type.should == "Cours"
+    end
+
     it "should have its first period from 16h" do
       period_1.start_time.should == "16h00"
     end
@@ -54,6 +58,10 @@ describe GroupBuilder do
 
     it "should have its second period on tuesday" do
       period_2.weekday.should == "tuesday"
+    end
+
+    it "should have its first period as a TP type" do
+      period_2.type.should == "TP"
     end
 
     it "should have its second period from 9h" do
@@ -68,6 +76,10 @@ describe GroupBuilder do
       period_3.weekday.should == "friday"
     end
 
+    it "should have its first period as a Lab type" do
+      period_3.type.should == "Lab"
+    end
+
     it "should have its third period from 8h" do
       period_3.start_time.should == "8h00"
     end
@@ -78,6 +90,10 @@ describe GroupBuilder do
 
     it "should have its fourth period on saturday" do
       period_4.weekday.should == "saturday"
+    end
+
+    it "should have its first period as a Cours type" do
+      period_4.type.should == "Cours"
     end
 
     it "should have its fourth period from 11h34" do

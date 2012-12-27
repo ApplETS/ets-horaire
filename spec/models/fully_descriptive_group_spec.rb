@@ -13,11 +13,11 @@ describe FullyDescriptiveGroup do
 
   describe "when checking for conflicting periods" do
     describe "when comparing two groups that have no conflicting periods" do
-      let(:lecture_1) { Period.on("monday").from("18h00").to("21h00") }
-      let(:practical_work_1) { Period.on("friday").from("18h00").to("21h00") }
+      let(:lecture_1) { Period.on("monday", "Cours").from("18h00").to("21h00") }
+      let(:practical_work_1) { Period.on("friday", "TP").from("18h00").to("21h00") }
 
-      let(:lecture_2) { Period.on("monday").from("9h00").to("12h00") }
-      let(:practical_work_2) { Period.on("friday").from("9h00").to("12h00") }
+      let(:lecture_2) { Period.on("monday", "Cours").from("9h00").to("12h00") }
+      let(:practical_work_2) { Period.on("friday", "TP").from("9h00").to("12h00") }
 
       describe "when the groups have course names that differ" do
         let(:group_1) { FullyDescriptiveGroup.new("LOG320", 1).with lecture_1, practical_work_1 }
@@ -41,12 +41,12 @@ describe FullyDescriptiveGroup do
     end
 
     describe "when comparing two groups that have conflicting periods" do
-      let(:conflicting_lecture_1) { Period.on("monday").from("18h00").to("21h00") }
-      let(:practical_work_1) { Period.on("friday").from("18h00").to("21h00") }
+      let(:conflicting_lecture_1) { Period.on("monday", "Cours").from("18h00").to("21h00") }
+      let(:practical_work_1) { Period.on("friday", "TP").from("18h00").to("21h00") }
       let(:group_1) { FullyDescriptiveGroup.new("LOG550", 1).with conflicting_lecture_1, practical_work_1 }
 
-      let(:conflicting_lecture_2) { Period.on("monday").from("16h00").to("19h00") }
-      let(:practical_work_2) { Period.on("friday").from("9h00").to("12h00") }
+      let(:conflicting_lecture_2) { Period.on("monday", "Cours").from("16h00").to("19h00") }
+      let(:practical_work_2) { Period.on("friday", "TP").from("9h00").to("12h00") }
       let(:group_2) { FullyDescriptiveGroup.new("GIA400", 2).with conflicting_lecture_2, practical_work_2 }
 
       it "should conflict" do

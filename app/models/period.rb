@@ -6,17 +6,18 @@ class Period
   MINUTES_PER_HOUR = 60
   MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
 
-  attr_reader :weekday, :start_time, :end_time
+  attr_reader :weekday, :type, :start_time, :end_time
 
-  def initialize(weekday)
+  def initialize(weekday, type)
     @weekday = weekday
+    @type = type
     @weekday_minutes = WEEKDAYS_INT[weekday.downcase] * MINUTES_PER_DAY
     @from_minutes = 0
     @to_minutes = 0
   end
 
-  def self.on(weekday)
-    Period.new(weekday)
+  def self.on(weekday, type)
+    Period.new(weekday, type)
   end
 
   def from(time)

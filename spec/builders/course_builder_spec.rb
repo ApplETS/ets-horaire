@@ -58,6 +58,10 @@ describe CourseBuilder do
         course_1_5.weekday.should == "monday"
       end
 
+      it "should have group 5 firsts period as a Cours type" do
+        course_1_5.type.should == "Cours"
+      end
+
       it "should have group 5 firsts period start at 20h" do
         course_1_5.start_time.should == "20h00"
       end
@@ -84,6 +88,10 @@ describe CourseBuilder do
 
       it "should have group 12 firsts period on tuesday" do
         course_1_12.weekday.should == "tuesday"
+      end
+
+      it "should have group 12 firsts period as a TP type" do
+        course_1_12.type.should == "TP"
       end
 
       it "should have group 12 firsts period start at 6h" do

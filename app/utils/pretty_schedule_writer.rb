@@ -1,11 +1,15 @@
 class PrettyScheduleWriter
 
-  def self.convert(input_filename, output_filename)
+  def self.output(schedules, output_filename)
     File.open(output_filename, 'w') do |file|
-      EtsPdfScheduleParser::extract_courses(input_filename).each do |course|
-        file.write "#{course.name}\n"
-        file.write 43.times.collect { "-" }.join + "\n"
-        course.groups.each do |group|
+      schedules.each do |groups|
+        file.write 43.times.collect { "*" }.join + "\n"
+        file.write 43.times.collect { "*" }.join + "\n"
+        file.write "\n"
+
+        groups.each do |group|
+          file.write "#{group.course_name}\n"
+          file.write 43.times.collect { "-" }.join + "\n"
           group_zerofilled = group.nb.to_s.rjust(2, "0")
           file.write "#{spacify(group_zerofilled)}#{output_period(group.periods[0])}"
           group.periods[1..-1].each do |period|
@@ -13,7 +17,6 @@ class PrettyScheduleWriter
           end
           file.write "\n"
         end
-        file.write "\n"
       end
     end
   end
@@ -28,7 +31,5 @@ class PrettyScheduleWriter
     spaces = (10 - text.length).times.collect { " " }.join
     "#{text}#{spaces}"
   end
-
-
 
 end

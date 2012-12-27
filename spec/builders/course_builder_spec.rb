@@ -106,6 +106,10 @@ describe CourseBuilder do
         course_2_12.weekday.should == "friday"
       end
 
+      it "should have group 12 firsts period as a TP type" do
+        course_2_12.type.should == "Lab"
+      end
+
       it "should have group 12 second period start at 13h" do
         course_2_12.start_time.should == "13h00"
       end

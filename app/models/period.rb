@@ -1,17 +1,16 @@
+require_relative "weekday"
+
 class Period
   
-  WEEKDAYS = %w(monday tuesday wednesday thursday friday saturday sunday)
-  WEEKDAYS_INT = Hash[*WEEKDAYS.each_with_index.collect { |weekday, index| [weekday, index] }.flatten]
-
   MINUTES_PER_HOUR = 60
   MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
 
-  attr_reader :weekday, :type, :start_time, :end_time
+  attr_reader :type, :start_time, :end_time
 
   def initialize(weekday, type)
-    @weekday = weekday
+    @weekday = Weekday.en(weekday)
     @type = type
-    @weekday_minutes = WEEKDAYS_INT[weekday.downcase] * MINUTES_PER_DAY
+    @weekday_minutes = @weekday.index * MINUTES_PER_DAY
     @from_minutes = 0
     @to_minutes = 0
   end
@@ -30,6 +29,10 @@ class Period
     @end_time = time
     @to_minutes = plain_time_to_int(time)
     self
+  end
+
+  def weekday
+    @weekday.en
   end
 
   def start_time_int

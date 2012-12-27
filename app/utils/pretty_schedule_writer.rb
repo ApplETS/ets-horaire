@@ -1,3 +1,5 @@
+require_relative "../models/weekday"
+
 class PrettyScheduleWriter
 
   def self.output(schedules, output_filename)
@@ -24,7 +26,7 @@ class PrettyScheduleWriter
   private
 
   def self.output_period(period)
-    "#{spacify(period.type)}#{spacify(period.weekday)}#{period.start_time} - #{period.end_time}\n"
+    "#{spacify(period.type)}#{spacify(Weekday.en(period.weekday).fr)}#{period.start_time} - #{period.end_time}\n"
   end
 
   def self.spacify(text = "")

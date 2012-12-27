@@ -27,12 +27,20 @@ class PrettyScheduleWriter
   private
 
   def self.output_period(period)
-    "#{spacify(period.type)}#{spacify(Weekday.en(period.weekday).fr)}#{period.start_time} - #{period.end_time}\n"
+    "#{spacify(type period)}#{spacify(weekday period)}#{period.start_time} - #{period.end_time}\n"
   end
 
   def self.spacify(text = "")
     spaces = (15 - text.length).times.collect { " " }.join
     "#{text}#{spaces}"
+  end
+
+  def self.type(period)
+    (period.type == 'C' ? 'Cours' : period.type)
+  end
+
+  def self.weekday(period)
+    Weekday.en(period.weekday).fr.capitalize
   end
 
 end

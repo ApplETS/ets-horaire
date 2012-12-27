@@ -1,8 +1,8 @@
 require_relative "app/utils/pdf_schedule_parser"
-require_relative "app/utils/pretty_schedule_writer"
-require_relative "app/schedule_finder"
 require_relative "app/builders/course_builder"
 require_relative "app/utils/course_utils"
+require_relative "app/schedule_finder"
+require_relative "app/utils/pretty_schedule_writer"
 
 WANTED_COURSES = ["GPE450", "LOG550", "LOG619", "LOG640", "LOG670", "ING500", "MAT472", "GIA601"]
 
@@ -13,5 +13,4 @@ courses.delete_if { |course| course.nil? }
 courses = CourseUtils.cleanup(courses)
 
 schedules = ScheduleFinder.combinations_for(courses, 4)
-
 PrettyScheduleWriter.output(schedules, "data/output.txt")

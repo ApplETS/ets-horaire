@@ -1,6 +1,6 @@
-CourseStruct = Struct.new(:name, :groups)
-GroupStruct = Struct.new(:nb, :periods)
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type)
+CourseStruct = Struct.new(:name, :groups) if !defined?(CourseStruct)
+GroupStruct = Struct.new(:nb, :periods) if !defined?(GroupStruct)
+PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
 
 class PdfScheduleParser
 

@@ -1,6 +1,6 @@
 require_relative "../../app/builders/period_builder"
 
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type)
+PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
 SHORT_WEEKDAY_FR = %w(lun mar mer jeu ven sam dim)
 WEEKDAYS_EN = %w(monday tuesday wednesday thursday friday saturday sunday)
 WEEKDAYS_NB = 7

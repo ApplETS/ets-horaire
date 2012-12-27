@@ -1,7 +1,7 @@
 require_relative "../../app/builders/group_builder"
 
-GroupStruct = Struct.new(:nb, :periods)
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type)
+GroupStruct = Struct.new(:nb, :periods) if !defined?(GroupStruct)
+PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
 
 describe GroupBuilder do
 

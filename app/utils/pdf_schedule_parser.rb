@@ -1,8 +1,8 @@
-CourseStruct = Struct.new(:name, :groups) if !defined?(CourseStruct)
-GroupStruct = Struct.new(:nb, :periods) if !defined?(GroupStruct)
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
-
 class PdfScheduleParser
+
+  CourseStruct = Struct.new(:name, :groups) if !defined?(CourseStruct)
+  GroupStruct = Struct.new(:nb, :periods) if !defined?(GroupStruct)
+  PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
 
 	COURSE_REGEX = /^\f?(\w{3}\d{3})/i
 	GROUP_REGEX = /^\f?\s*(\d{1,2})\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i

@@ -19,10 +19,10 @@ describe GroupBuilder do
   end
 
   describe "when building an elaborate group" do
-    let(:period_struct_1) { PeriodStruct.new("lun", "16h00", "23h00", "Cours") }
-    let(:period_struct_2) { PeriodStruct.new("mar", "9h00", "9h05", "TP") }
-    let(:period_struct_3) { PeriodStruct.new("ven", "8h00", "21h00", "Lab") }
-    let(:period_struct_4) { PeriodStruct.new("sam", "11h34", "12h39", "Cours") }
+    let(:period_struct_1) { PeriodStruct.new("lun", "16:00", "23:00", "Cours") }
+    let(:period_struct_2) { PeriodStruct.new("mar", "9:00", "9:05", "TP") }
+    let(:period_struct_3) { PeriodStruct.new("ven", "8:00", "21:00", "Lab") }
+    let(:period_struct_4) { PeriodStruct.new("sam", "11:34", "12:39", "Cours") }
     let(:group_struct) { GroupStruct.new 12, [period_struct_1, period_struct_2, period_struct_3, period_struct_4] }
 
     let(:group) { GroupBuilder.build group_struct }
@@ -49,11 +49,11 @@ describe GroupBuilder do
     end
 
     it "should have its first period from 16h" do
-      period_1.start_time.should == "16h00"
+      period_1.start_time.should == "16:00"
     end
 
     it "should have its first period to 23h" do
-      period_1.end_time.should == "23h00"
+      period_1.end_time.should == "23:00"
     end
 
     it "should have its second period on tuesday" do
@@ -65,11 +65,11 @@ describe GroupBuilder do
     end
 
     it "should have its second period from 9h" do
-      period_2.start_time.should == "9h00"
+      period_2.start_time.should == "9:00"
     end
 
-    it "should have its second period to 9h05" do
-      period_2.end_time.should == "9h05"
+    it "should have its second period to 9:05" do
+      period_2.end_time.should == "9:05"
     end
 
     it "should have its third period on friday" do
@@ -81,11 +81,11 @@ describe GroupBuilder do
     end
 
     it "should have its third period from 8h" do
-      period_3.start_time.should == "8h00"
+      period_3.start_time.should == "8:00"
     end
 
     it "should have its third period to 21h" do
-      period_3.end_time.should == "21h00"
+      period_3.end_time.should == "21:00"
     end
 
     it "should have its fourth period on saturday" do
@@ -96,12 +96,12 @@ describe GroupBuilder do
       period_4.type.should == "Cours"
     end
 
-    it "should have its fourth period from 11h34" do
-      period_4.start_time.should == "11h34"
+    it "should have its fourth period from 11:34" do
+      period_4.start_time.should == "11:34"
     end
 
-    it "should have its fourth period to 12h39" do
-      period_4.end_time.should == "12h39"
+    it "should have its fourth period to 12:39" do
+      period_4.end_time.should == "12:39"
     end
   end
 

@@ -50,7 +50,7 @@ class Period
   private
 
   def plain_time_to_int(plain_time)
-    hours, minutes = plain_time.split("h")
+    hours, minutes = plain_time.split(":")
     hours.to_i * MINUTES_PER_HOUR + minutes.to_i
   end
 

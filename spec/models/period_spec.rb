@@ -35,7 +35,7 @@ describe Period do
   end
 
   describe "when creating a course on friday from 5h45 to 13h55" do
-    let(:period_on_friday) { Period::on("friday", "Lab").from("5h45").to("13h55") }
+    let(:period_on_friday) { Period::on("friday", "Lab").from("5:45").to("13:55") }
 
     it "should return the appropriate from int value" do
       period_on_friday.start_time_int.should == 6105
@@ -54,19 +54,19 @@ describe Period do
     end
 
     it "should return 5h00 as the start time" do
-      period_on_friday.start_time.should == "5h45"
+      period_on_friday.start_time.should == "5:45"
     end
 
     it "should return 13h00 as the start time" do
-      period_on_friday.end_time.should == "13h55"
+      period_on_friday.end_time.should == "13:55"
     end
   end
 
   describe "when checking for a conflict in a course" do
 
     describe "when comparing two periods one before the other" do
-      let(:first_period) { Period::on("monday", "Cours").from("9h00").to("12h00") }
-      let(:second_period) { Period::on("monday", "Cours").from("13h00").to("17h00") }
+      let(:first_period) { Period::on("monday", "Cours").from("9:00").to("12:00") }
+      let(:second_period) { Period::on("monday", "Cours").from("13:00").to("17:00") }
 
       it "should not conflict" do
         first_period.conflicts?(second_period).should == false
@@ -75,8 +75,8 @@ describe Period do
     end
 
     describe "when comparing two intersecting periods" do
-      let(:first_period) { Period::on("monday", "Cours").from("9h00").to("12h00") }
-      let(:second_period) { Period::on("monday", "Cours").from("11h00").to("17h00") }
+      let(:first_period) { Period::on("monday", "Cours").from("9:00").to("12:00") }
+      let(:second_period) { Period::on("monday", "Cours").from("11:00").to("17:00") }
 
       it "should conflict" do
         first_period.conflicts?(second_period).should == true

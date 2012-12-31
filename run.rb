@@ -2,6 +2,7 @@ require_relative "app/utils/pdf_schedule_parser"
 require_relative "app/builders/course_builder"
 require_relative "app/utils/course_utils"
 require_relative "app/schedule_finder"
+require_relative "app/utils/schedule_list_printer"
 require_relative "app/utils/schedule_printer"
 
 WANTED_COURSES = ["GPE450", "LOG550", "LOG619", "LOG640", "LOG670", "ING500", "MAT472", "GIA601"]
@@ -14,7 +15,9 @@ courses = CourseUtils.cleanup(courses)
 
 schedules = ScheduleFinder.combinations_for(courses, 4)
 
-File.open("data/pretty_output", "w") do |file|
+ScheduleListPrinter.output schedules, "data/schedule_list_output"
+
+File.open("data/schedule_output", "w") do |file|
   schedules.each do |schedule|
     file.write "*******************************************************************************************\n"
     file.write "*******************************************************************************************\n\n"

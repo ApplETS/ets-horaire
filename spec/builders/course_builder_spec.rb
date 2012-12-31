@@ -21,11 +21,11 @@ describe CourseBuilder do
     end
 
     describe "when building an elaborate course" do
-      let(:course_1_5_struct) { PeriodStruct.new("lun", "20h00", "21h00", "Cours") }
+      let(:course_1_5_struct) { PeriodStruct.new("lun", "20:00", "21:00", "Cours") }
       let(:group_5_struct) { GroupStruct.new(5, [course_1_5_struct]) }
       let(:group_9_struct) { GroupStruct.new(9, []) }
-      let(:course_1_12_struct) { PeriodStruct.new("mar", "6h00", "11h00", "TP") }
-      let(:course_2_12_struct) { PeriodStruct.new("ven", "13h00", "16h00", "Lab") }
+      let(:course_1_12_struct) { PeriodStruct.new("mar", "6:00", "11:00", "TP") }
+      let(:course_2_12_struct) { PeriodStruct.new("ven", "13:00", "16:00", "Lab") }
       let(:group_12_struct) { GroupStruct.new(12, [course_1_12_struct, course_2_12_struct]) }
       let(:course_struct) { CourseStruct.new("LOG320", [group_5_struct, group_9_struct, group_12_struct]) }
 
@@ -63,11 +63,11 @@ describe CourseBuilder do
       end
 
       it "should have group 5 firsts period start at 20h" do
-        course_1_5.start_time.should == "20h00"
+        course_1_5.start_time.should == "20:00"
       end
 
       it "should have group 5 firsts period end at 21h" do
-        course_1_5.end_time.should == "21h00"
+        course_1_5.end_time.should == "21:00"
       end
 
       it "should have a group 9" do
@@ -95,11 +95,11 @@ describe CourseBuilder do
       end
 
       it "should have group 12 firsts period start at 6h" do
-        course_1_12.start_time.should == "6h00"
+        course_1_12.start_time.should == "6:00"
       end
 
       it "should have group 12 firsts period end at 11h" do
-        course_1_12.end_time.should == "11h00"
+        course_1_12.end_time.should == "11:00"
       end
 
       it "should have group 12 second period on friday" do
@@ -111,11 +111,11 @@ describe CourseBuilder do
       end
 
       it "should have group 12 second period start at 13h" do
-        course_2_12.start_time.should == "13h00"
+        course_2_12.start_time.should == "13:00"
       end
 
       it "should have group 12 second period end at 16h" do
-        course_2_12.end_time.should == "16h00"
+        course_2_12.end_time.should == "16:00"
       end
     end
   end

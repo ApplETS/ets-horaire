@@ -12,7 +12,7 @@ describe PeriodBuilder do
       en_weekday = WEEKDAYS_EN[index]
 
       describe "when building a period with \"#{short_fr_weekday}\" as a weekday" do
-        let(:period_struct) { PeriodStruct.new short_fr_weekday, "0h00", "1h00", "TP" }
+        let(:period_struct) { PeriodStruct.new short_fr_weekday, "0:00", "1:00", "TP" }
         let(:period) { PeriodBuilder.build period_struct }
 
         it "should build a period with the english weekday \"#{en_weekday}\"" do
@@ -22,7 +22,7 @@ describe PeriodBuilder do
     end
 
     describe "when building a period" do
-      let(:period_struct) { PeriodStruct.new "mer", "16h00", "20h00", "Cours" }
+      let(:period_struct) { PeriodStruct.new "mer", "16:00", "20:00", "Cours" }
       let(:period) { PeriodBuilder.build period_struct }
 
       it "should build the period with the Cours as the type" do
@@ -30,11 +30,11 @@ describe PeriodBuilder do
       end
 
       it "should build a period with the appropriate start time" do
-        period.start_time.should == "16h00"
+        period.start_time.should == "16:00"
       end
 
       it "should build a period with the appropriate end time" do
-        period.end_time.should == "20h00"
+        period.end_time.should == "20:00"
       end
     end
 end

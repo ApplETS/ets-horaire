@@ -1,6 +1,6 @@
 require_relative "../models/weekday"
 
-class PrettyScheduleWriter
+class ScheduleListPrinter
 
   def self.output(schedules, output_filename)
     File.open(output_filename, 'w') do |file|

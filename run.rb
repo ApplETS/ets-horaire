@@ -7,7 +7,16 @@ require_relative "app/utils/schedule_printer"
 
 WANTED_COURSES = ["GPE450", "LOG550", "LOG619", "LOG640", "LOG670", "ING500", "MAT472", "GIA601"]
 
-courses = PdfScheduleParser::extract_courses("data/LOG-h13.txt").collect do |course_struct|
+def warn_user
+  puts "Be sure that you have the 'pdftotext' library installed, to be able to convert the course pdf to text."
+end
+
+pdftotext_output = `pdftotext -enc UTF-8 -layout data/horaire_logiciel_h13.pdf data/horaire_logiciel_h13.txt`
+warn_user if !pdftotext_output.empty?
+
+courses_list = File.open("data/horaire_logiciel_h13.txt", "r")
+
+courses = PdfScheduleParser::extract_courses(courses_list).collect do |course_struct|
   CourseBuilder.build(course_struct) if WANTED_COURSES.include?(course_struct.name)
 end
 courses.delete_if { |course| course.nil? }

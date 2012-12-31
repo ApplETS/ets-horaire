@@ -1,0 +1,204 @@
+ÉCOLE DE TECHNOLOGIE SUPÉRIEURE
+Bureau des services académiques
+                                                                                                    Baccalauréat en génie LOGICIEL
+                                                     HORAIRE HIVER 2013
+                                                Locaux A: bâtiment sud, 1100, Notre-Dame O.
+                                                Locaux B: bâtiment nord, 1111, Notre-Dame O.
+
+    Sauf mention particulière de la part de l'enseignant lors de sa première séance de cours, les travaux pratiques et les laboratoires commencent la
+                              deuxième semaine du trimestre à condition qu'une séance de cours ait préalablement eu lieu.
+
+
+
+COURS        GR     JOUR          HEURE          ACTIVITÉ     LOCAL                ENSEIGNANT                                    PRÉALABLES
+
+
+ELE747       ANALYSE ET TRAITEMENT D'IMAGES
+             01     Mer         08:45 - 12:15    C            B-3418               J.F. Pambrun
+                    Lun         13:30 - 17:30    Labo/2       A-3334
+
+
+GIA601       ERGONOMIE ET SÉCURITÉ EN MILIEU DE TRAVAIL
+             01     Lun         13:30 - 17:00    C            B-0904               S. Nadeau
+                    Jeu         13:30 - 15:30    TP-Labo A    A-4404, A-1220
+                    Jeu         15:30 - 17:30    TP-Labo B    A-4404
+
+
+GPA659       VISION ARTIFICIELLE
+             01     Mer         13:30 - 17:00    C            B-3418               J.A. Landry
+                    Ven         08:30 - 11:30    Labo         A-3608
+
+
+GPE450       GESTION DU PERSONNEL ET RELATIONS INDUSTRIELLES
+             01     Mar         08:45 - 12:15    C            B-1518               C. Blackburn
+                    Jeu         08:30 - 10:30    TP           B-3402
+             02     Lun         18:00 - 21:30    C            B-0904               S. Tétreault
+                    Jeu         18:00 - 20:00    TP           B-1514
+GPO602       ÉVALUATION ET CONTRÔLE DE L'ENVIRONNEMENT INDUSTRIEL
+             01     Mer         08:45 - 12:15    C            B-3404               M. Debia
+                    Lun         08:30 - 10:30    TP/Labo      B-3410, A-1212
+
+
+GPO605       ENTREPRENEURIAT ET INNOVATION
+             01     Mar         13:30 - 17:00    C            B-2620               M. Devost
+                    Ven         13:30 - 17:30    TP A+B       B-1716
+             02     Jeu         18:00 - 21:30    C            B-3414               P. Laferrière
+                    Mar         18:00 - 20:00    TP           B-3416
+
+
+INF111       PROGRAMMATION ORIENTÉE-OBJET (HORS PROGRAMME)
+             01     Ven         08:30 - 12:00    C            B-2620, B-2402       P. Bélisle
+                    Mer         13:00 - 16:00    Labo         B-2402
+
+
+ING500       OUTILS DE DÉVELOPPEMENT DURABLE POUR L'INGÉNIEUR
+             01     Jeu         09:00 - 12:30    C            B-3418               P. Terrier
+                    Mar         09:00 - 11:00    TP           B-3408
+
+
+LOG121       CONCEPTION ORIENTÉE OBJET
+             01     Mer         13:00 - 17:00    C            A-1340               P. Boucher                      Début semaine du 4 février 2013
+                    Ven         08:45 - 12:15    Labo         A-3412
+
+
+LOG210       ANALYSE ET CONCEPTION DE LOGICIELS                                                                    LOG121
+             01     Mer         08:45 - 12:15    C            A-2330
+                    Lun         08:30 - 11:30    Labo         A-3412
+             02     Lun         18:00 - 21:30    C            A-2448               F. Caron
+                    Mer         18:00 - 21:00    Labo         A-3412
+
+
+LOG240       TESTS ET MAINTENANCE                                                                                  LOG121
+             01     Lun         13:30 - 17:00    C            A-2330               S. Kpodjedo
+                    Jeu         13:30 - 15:30    Labo         A-3322
+
+
+LOG320       STRUCTURES DE DONNÉES ET ALGORITHMES                                                                  MAT210
+             01     Jeu         13:30 - 17:00    C            A-3336               P. Cardinal
+                    Lun         13:30 - 16:30    TP/Labo      A-4406, A-3322
+             02     Lun         13:30 - 17:00    C            A-1300               P. Dumouchel
+                    Jeu         13:30 - 16:30    TP/Labo      B-4416, A-3324
+
+
+LOG330       ASSURANCE DE LA QUALITÉ DES LOGICIELS                                                                 LOG121 et LOG240
+             01     Jeu         13:30 - 17:00    C            A-2332               A. April / C.Y. Laporte
+                    Lun         13:30 - 15:30    TP-Labo A    A-4660, A-3324
+                    Lun         15:30 - 17:30    TP-Labo B    A-3324
+
+
+LOG350       CONCEPTION ET ÉVALUATION DES INTERFACES UTILISATEURS                                                  LOG210
+             01     Mer         18:00 - 21:30    C            B-1514               F. Cardinal
+                    Lun         18:00 - 21:00    Labo         A-3412
+
+
+LOG410       ANALYSE DE BESOINS ET SPÉCIFICATIONS                                                                  LOG240
+             01     Mar         13:30 - 17:00    C            A-1300               P. Bourque
+                    Ven         13:30 - 15:30    TP-Labo A    A-4404, A-3412
+                    Ven         15:30 - 17:30    TP-Labo B    A-4404, A-3412
+
+
+
+
+  Le 20 décembre 2012
+ÉCOLE DE TECHNOLOGIE SUPÉRIEURE
+Bureau des services académiques
+                                                                                                         Baccalauréat en génie LOGICIEL
+                                                        HORAIRE HIVER 2013
+                                                   Locaux A: bâtiment sud, 1100, Notre-Dame O.
+                                                   Locaux B: bâtiment nord, 1111, Notre-Dame O.
+
+      Sauf mention particulière de la part de l'enseignant lors de sa première séance de cours, les travaux pratiques et les laboratoires commencent la
+                                deuxième semaine du trimestre à condition qu'une séance de cours ait préalablement eu lieu.
+
+
+
+COURS          GR     JOUR           HEURE          ACTIVITÉ       LOCAL                 ENSEIGNANT                                       PRÉALABLES
+
+
+LOG430         ARCHITECTURE LOGICIELLE
+               01     Mer          08:45 - 12:15    C              A-1302                F. Robert                         LOG210
+                      Lun          08:30 - 11:30    Labo           A-3322
+               02     Lun          08:30 - 12:00    C              A-2332                L. Trudeau
+                      Mer          08:45 - 11:45    Labo           A-3322
+
+
+LOG515         GESTION DE PROJETS EN GÉNIE LOGICIEL                                                                        LOG240 et PCL210
+               01     Lun          18:00 - 21:30    C              B-1506                J. Gareau
+                      Mer          18:00 - 21:00    Labo A         A-3324
+                      Mer          18:00 - 21:00    Labo B         A-3326
+
+
+LOG550         CONCEPTION DE SYSTÈMES INFORMATIQUES EN TEMPS RÉEL                                                          LOG210
+               01     Mer          18:00 - 21:30    C              A-4404                C. Larose
+                      Lun          18:00 - 20:00    Labo           A-3322
+
+
+LOG610         RÉSEAUX DE TÉLÉCOMMUNICATION                                                                                LOG121
+               01     Jeu          18:00 - 21:30    C              A-2332                M. Houde
+                      Mar          18:00 - 21:00    Labo           A-3322
+               02     Mar          18:00 - 21:30    C              B-3432                M. Houde
+                      Jeu          18:00 - 21:00    Labo           A-3324
+
+
+LOG619         SÉCURITÉ DES SYSTÈMES                                                                                       LOG610
+               01     Jeu          18:00 - 21:30    C              A-2330                M.A. Drapeau
+                      Mar          18:00 - 20:00    TP/Labo        A-3412
+
+
+LOG625         INTRODUCTION AUX SYSTÈMES INTELLIGENTS                                                                      LOG320 et MAT350
+               01     Mer          13:30 - 17:00    C              A-2332                L. Thériault
+                      Ven          08:45 - 10:45    Labo A         A-3322
+                      Ven          10:45 - 12:45    Labo B         A-3322
+               02     Ven          08:45 - 12:45    C              B-1510                L. Thériault
+                      Mer          13:30 - 15:30    Labo           A-3324
+
+
+LOG640         INTRODUCTION AU TRAITEMENT PARALLÈLE
+               01     Mar          13:30 - 17:00    C              A-1350                L. Thériault
+                      Ven          13:30 - 15:30    TP/Labo        A-3336, A-3322
+
+
+LOG660         BASES DE DONNÉES DE HAUTE PERFORMANCE                                                                       LOG320
+               01     Mar          18:00 - 21:30    C              B-4410                C. Desrosiers
+                      Jeu          18:00 - 21:00    TP/Labo        A-3336, A-3322
+
+
+LOG670         LANGAGES FORMELS ET SEMI-FORMELS                                                                            MAT210
+               01     Mar          13:30 - 17:00    C              B-4416                P.A. Ménard
+                      Ven          13:30 - 15:30    Labo           A-3324
+
+
+LOG745         INTERFACES UTILISATEURS AVANCÉES                                                                            LOG350 et MAT472
+               01     Lun          13:30 - 17:00    C              A-1350                M.J. McGuffin
+                      Jeu          13:30 - 15:30    Labo A         A-3326
+                      Jeu          15:30 - 17:30    Labo B         A-3326
+
+
+LOG791         PROJETS SPÉCIAUX                                                                                            Autorisation du directeur de département
+               01     Mer          22:00 - 23:00    Projet
+
+
+LOG792         PROJET DE FIN D'ÉTUDES EN GÉNIE LOGICIEL                                                                    PCL310
+               01     Mer          22:00 - 23:00    Projet
+
+
+NOTES
+a)             Activités
+               C : cours          TP : travaux pratiques                                  LABO : laboratoires
+                                  TP/2 : travaux pratiques aux deux (2) semaines          LABO/2 : laboratoires aux deux (2) semaines
+               TP (A+B). Dans un cours, si le nombre d'étudiants le justifie, les travaux pratiques seront divisés en deux (2) groupes (A+B). La moitié des étudiants
+               devront se présenter à la première période de deux (2) heures et les autres devront se présenter à la deuxième période de deux (2) heures. Ceci
+               vous sera confirmé au début du trimestre. Un étudiant peut donc s'inscrire à deux (2) cours dont les travaux pratiques (TP) ont lieu en même temps,
+               s'il est indiqué (A+B) à côté de chacun des travaux pratiques (TP).
+
+b)             À TOUS LES ÉTUDIANTS DU PROGRAMME DE BACCALAURÉAT :
+               Les cours de concentration ne peuvent être suivis qu'après la réussite d'un minimum de soixante-dix crédits de cours du programme.
+               Les cours obligatoires doivent être suivis selon une séquence correspondant à la grille de cheminement type du programme.
+
+ Sauf mention particulière de la part de l'enseignant lors de sa première séance de cours, les travaux pratiques
+   et les laboratoires commencent la deuxième semaine du trimestre à condition qu'une séance de cours ait
+                                              préalablement eu lieu.
+
+
+     Le 20 décembre 2012
+

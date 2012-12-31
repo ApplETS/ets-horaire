@@ -8,14 +8,12 @@ class PdfScheduleParser
 	GROUP_REGEX = /^\f?\s*(\d{1,2})\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i
 	PERIOD_REGEX = /^\f?\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i
 
-	def self.extract_courses(filepath)
-		pdf = File.new(filepath, "r")
-
+	def self.extract_courses(stream)
 		courses = []
 		course = nil
 		group = nil
 		
-		while (line = pdf.gets)
+		while (line = stream.gets)
 			course_match_data = COURSE_REGEX.match(line)
 			group_match_data = GROUP_REGEX.match(line)
 			period_match_data = PERIOD_REGEX.match(line)
@@ -31,8 +29,8 @@ class PdfScheduleParser
 				group.periods << build_period(period_match_data[1..4])
 			end
 		end
-		
-		pdf.close
+
+    stream.close
 		courses
 	end
 

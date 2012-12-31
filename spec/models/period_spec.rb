@@ -34,15 +34,15 @@ describe Period do
     end
   end
 
-  describe "when creating a course on friday from 5h00 to 13h00" do
-    let(:period_on_friday) { Period::on("friday", "Lab").from("5h00").to("13h00") }
+  describe "when creating a course on friday from 5h45 to 13h55" do
+    let(:period_on_friday) { Period::on("friday", "Lab").from("5h45").to("13h55") }
 
     it "should return the appropriate from int value" do
-      period_on_friday.start_time_int.should == 6060
+      period_on_friday.start_time_int.should == 6105
     end
 
     it "should return the appropriate to int value" do
-      period_on_friday.end_time_int.should == 6540
+      period_on_friday.end_time_int.should == 6595
     end
 
     it "should return monday as the weekday" do
@@ -54,11 +54,11 @@ describe Period do
     end
 
     it "should return 5h00 as the start time" do
-      period_on_friday.start_time.should == "5h00"
+      period_on_friday.start_time.should == "5h45"
     end
 
     it "should return 13h00 as the start time" do
-      period_on_friday.end_time.should == "13h00"
+      period_on_friday.end_time.should == "13h55"
     end
   end
 

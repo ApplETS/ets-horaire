@@ -1,7 +1,7 @@
-require_relative "../../app/utils/schedule_printer"
+require_relative "../../app/utils/calendar_schedule_printer"
 require_relative "../../app/models/period"
 
-describe SchedulePrinter do
+describe CalendarSchedulePrinter do
 
   let(:stream) { mock(Object) }
 
@@ -128,7 +128,7 @@ describe SchedulePrinter do
 
   after(:each) do
     stream.should_receive(:write).once.with "     --------------------------------------------------------------------------------------\n"
-    SchedulePrinter.print schedule, stream
+    CalendarSchedulePrinter.print schedule, stream
   end
 
 end

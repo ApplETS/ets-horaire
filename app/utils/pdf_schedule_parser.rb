@@ -8,7 +8,7 @@ class PdfScheduleParser
 	GROUP_REGEX = /^\f?\s*(\d{1,2})\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i
 	PERIOD_REGEX = /^\f?\s*(\w{3})\s*(\d{2}:\d{2})\s-\s(\d{2}:\d{2})\s*(([\d\w\/\-\\+]+\s?)+)/i
 
-	def self.extract_courses(stream)
+	def self.extract_courses_from(stream)
 		courses = []
 		course = nil
 		group = nil

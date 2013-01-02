@@ -12,10 +12,11 @@ describe CourseUtils do
     let(:course_4) { Course.new("LOG640") }
     let(:course_5) { Course.new("GIA400") }
     let(:courses) { [course_1, course_2, course_3, course_4, course_5] }
-    let(:cleaned_courses) { CourseUtils.cleanup courses }
+
+    before(:each) { CourseUtils.cleanup! courses }
 
     it "should delete course duplicates by name" do
-      cleaned_courses.should =~ [course_1, course_2, course_3, course_5]
+      courses.should =~ [course_1, course_2, course_3, course_5]
     end
   end
 

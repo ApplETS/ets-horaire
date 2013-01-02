@@ -1,6 +1,6 @@
 require_relative "../models/weekday"
 
-class ScheduleListPrinter
+class ListSchedulePrinter
 
   def self.output(schedules, output_filename)
     File.open(output_filename, 'w') do |file|
@@ -17,7 +17,6 @@ class ScheduleListPrinter
           group.periods[1..-1].each do |period|
             file.write "#{spacify}#{output_period(period)}"
           end
-          file.write "\n"
           file.write "\n"
         end
       end

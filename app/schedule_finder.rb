@@ -1,5 +1,5 @@
 require_relative "conditional_combinator"
-require_relative "models/fully_descriptive_group"
+require_relative "models/course_group"
 
 class ScheduleFinder
 
@@ -15,7 +15,7 @@ class ScheduleFinder
   def self.flatten(courses)
     periods = courses.collect do |course|
       course.groups.collect do |group|
-        FullyDescriptiveGroup.new(course.name, group.nb).with *group.periods
+        CourseGroup.new(course.name, group.nb).with *group.periods
       end
     end
     periods.flatten

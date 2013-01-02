@@ -1,6 +1,6 @@
 require_relative "group"
 
-class FullyDescriptiveGroup < Group
+class CourseGroup < Group
 
   attr_reader :course_name
 

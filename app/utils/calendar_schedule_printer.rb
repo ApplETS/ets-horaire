@@ -1,4 +1,4 @@
-class SchedulePrinter
+class CalendarSchedulePrinter
 
   COLUMN_WIDTH = 16
   NB_COLUMNS = 5

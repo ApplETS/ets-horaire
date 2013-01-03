@@ -1,0 +1,70 @@
+%div.weekly-calendar
+  %table.backdrop
+    %thead
+      %tr
+        %th.hour
+        - foreach_weekday do |weekday|
+          %th= weekday
+    %tbody
+      - foreach_hour do |hour|
+        %tr.hour
+          %td= hour_string_with hour
+          - foreach_weekday do
+            %td.empty
+        - unless last? hour
+          %tr.half-hour
+            %td= halfhour_string_with hour
+            - foreach_weekday do
+              %td.empty
+  .schedule
+    - schedule.each do |weekday|
+      %div{class: weekday_classes(weekday)}
+        - weekday.periods.each do |period|
+          %div{class: period_classes(period)}
+            .hour= format_time_of(period)
+            .title
+              .course= period.course
+              .type= period.type
+    -#  .period.red-orange.from-1800.duration-0200
+    -#    .hour 18:00 - 20:00
+    -#    .title
+    -#      .course LOG550-01
+    -#      .type Labo
+    -#.weekday.tuesday
+    -#  .period.yellow-orange.from-0845.duration-0330
+    -#    .hour 08:45 - 12:15
+    -#    .title
+    -#      .course GPE450-01
+    -#      .type Cours
+    -#  .period.yellow.from-1800.duration-0200
+    -#    .hour 18:00 - 20:00
+    -#    .title
+    -#      .course LOG619-01
+    -#      .type TP/Labo
+    -#.weekday.wednesday
+    -#  .period.red-orange.from-1800.duration-0330
+    -#    .hour 18:00 - 21:30
+    -#    .title
+    -#      .course LOG550-01
+    -#      .type Cours
+    -#.weekday.thursday
+    -#  .period.yellow-orange.from-0830.duration-0200
+    -#    .hour 08:30 - 10:30
+    -#    .title
+    -#      .course GPE450-01
+    -#      .type TP
+    -#  .period.red.from-1330.duration-0200
+    -#    .hour 13:30 - 15:30
+    -#    .title
+    -#      .course GIA601-01
+    -#      .type TP-Labo A
+    -#  .period.red.from-1530.duration-0200
+    -#    .hour 15:30 - 17:30
+    -#    .title
+    -#      .course GIA601-01
+    -#      .type TP-Labo B
+    -#  .period.yellow.from-1800.duration-0330
+    -#    .hour 18:00 - 21:30
+    -#    .title
+    -#      .course LOG619-01
+    -#      .type Cours

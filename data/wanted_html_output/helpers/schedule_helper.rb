@@ -35,19 +35,6 @@ module ScheduleHelper
     "#{flat_time period.start_time} - #{flat_time period.end_time}"
   end
 
-  # Temp
-  Weekday = Struct.new(:name, :periods)
-  Period = Struct.new(:course, :type, :color, :start_time, :end_time)
-
-  def schedule
-    gia601_course = Period.new("GIA601-01", "course", "red", 13*60+30, 17*60)
-    monday = Weekday.new "monday", [gia601_course]
-    tuesday = Weekday.new "tuesday", []
-    wednesday = Weekday.new "wednesday", []
-    thursday = Weekday.new "thursday", []
-    [monday, tuesday, wednesday, thursday]
-  end
-
   private
 
   def zerofill(hour)

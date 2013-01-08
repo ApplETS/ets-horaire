@@ -1,7 +1,10 @@
 source :rubygems
 
 gem "rspec"
-gem "rspec-spies"
-gem "shoulda"
 gem "middleman", "~>3.0.7"
-gem "cactus"
+gem "nokogiri"
+gem "erubis"
+gem "css_parser"
+gem "haml"
+gem "compass"
+gem "sass"

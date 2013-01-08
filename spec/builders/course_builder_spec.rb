@@ -1,8 +1,8 @@
 require_relative "../../app/builders/course_builder"
 
-CourseStruct = Struct.new(:name, :groups) if !defined?(CourseStruct)
-GroupStruct = Struct.new(:nb, :periods) if !defined?(GroupStruct)
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) if !defined?(PeriodStruct)
+CourseStruct = Struct.new(:name, :groups) unless defined?(CourseStruct)
+GroupStruct = Struct.new(:nb, :periods) unless defined?(GroupStruct)
+PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) unless defined?(PeriodStruct)
 
 describe CourseBuilder do
 

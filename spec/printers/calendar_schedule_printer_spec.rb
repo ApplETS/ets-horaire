@@ -1,4 +1,4 @@
-require_relative "../../app/utils/calendar_schedule_printer"
+require_relative "../../app/printers/calendar_schedule_printer"
 require_relative "../../app/models/period"
 
 CourseGroupStruct = Struct.new(:course_name, :nb, :periods) unless defined?(CourseGroupStruct)

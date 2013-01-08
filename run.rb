@@ -2,8 +2,8 @@ require_relative "app/utils/pdf_schedule_parser"
 require_relative "app/builders/course_builder"
 require_relative "app/utils/course_utils"
 require_relative "app/schedule_finder"
-require_relative "app/utils/list_schedule_printer"
-require_relative "app/utils/calendar_schedule_printer"
+require_relative "app/printers/list_schedule_printer"
+require_relative "app/printers/calendar_schedule_printer"
 
 WANTED_COURSES = ["GPE450", "LOG550", "LOG619", "LOG640", "LOG670", "ING500", "MAT472", "GIA601"]
 BASE_DIR = File.dirname(__FILE__)

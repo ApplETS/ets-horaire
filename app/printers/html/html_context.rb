@@ -1,41 +1,32 @@
-module ScheduleHelper
+class HtmlContext
 
-  HOURS = (8..23)
-  WEEKDAYS = %w(Lundi Mardi Mercredi Jeudi Vendredi)
-
-  def foreach_weekday
-    WEEKDAYS.each { |weekday| yield weekday }
+  def initialize(weekdays, hours, schedule)
+    @weekdays = weekdays
+    @hours = hours
+    @schedule = schedule
   end
 
-  def foreach_hour
-    HOURS.each { |hour| yield hour }
-  end
+  private
 
   def hour_string_with(hour)
     "#{zerofill hour}:00"
   end
 
-  def halfhour_string_with(hour)
-    "#{zerofill hour}:30"
-  end
-
   def last?(hour)
-    HOURS.last == hour
+    @hours.last == hour
   end
 
-  def weekday_classes(weekday)
+  def weekday_classes_for(weekday)
     "weekday #{weekday.name}"
   end
 
-  def period_classes(period)
+  def period_classes_for(period)
     "period #{period.color} from-#{start_time_of period} duration-#{duration_of period}"
   end
 
   def format_time_of(period)
     "#{flat_time period.start_time} - #{flat_time period.end_time}"
   end
-
-  private
 
   def zerofill(hour)
     hour.to_s.rjust(2, "0")

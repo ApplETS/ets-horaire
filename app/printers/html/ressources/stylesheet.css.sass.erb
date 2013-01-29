@@ -1,27 +1,9 @@
 @import "compass"
 
-$column-width: 200px
-$row-height: 20px
-$period-padding: 10px
+$column-width: <%= COLUMN_WIDTH %>px
+$row-height: <%= ROW_HEIGHT %>px
+$period-padding: <%= PERIOD_PADDING %>px
 $period-width: $column-width - $period-padding * 2 - 10px
-
-<%
-
-HOURS = (8..23)
-
-def foreach_hours
-  HOURS.each_with_index { |hour, index| yield hour, index }
-end
-
-def for_nb_hours
-  HOURS.each_with_index { |hour, index| yield index }
-end
-
-def zerofill(hour)
-  hour.to_s.rjust(2, "0")
-end
-
-%>
 
 .weekly-calendar
   position: relative
@@ -60,17 +42,7 @@ end
       top: 0
       left: 0
 
-      &.tuesday
-        left: $column-width
-
-      &.wednesday
-        left: $column-width * 2
-
-      &.thursday
-        left: $column-width * 3
-
-      &.friday
-        left: $column-width * 4
+<%= weekday_classes %>
 
       .period
         position: absolute
@@ -128,21 +100,7 @@ end
         &.magenta-red
           background-color: #F26D7D
 
-        <% foreach_hours do |hour, index| %>
-          <% hour_zerofilled = zerofill(hour) %>
-            <% 4.times.each do |nb| %>
-        &.from-<%= "#{hour_zerofilled}#{zerofill nb * 15}" %>
-          top: <%= index %> * $row-height * 2 + <%= nb %> * $row-height / 2
-            <% end %>
-        <% end %>
-
-        <% for_nb_hours do |hour| %>
-          <% hour_zerofilled = zerofill(hour) %>
-            <% 4.times.each do |nb| %>
-        &.duration-<%= "#{hour_zerofilled}#{zerofill nb * 15}" %>
-          height: <%= hour %> * $row-height * 2 + <%= nb %> * $row-height / 2 - $period-padding * 2
-            <% end %>
-        <% end %>
+<%= period_classes %>
 
         .hour
           margin-bottom: 5px

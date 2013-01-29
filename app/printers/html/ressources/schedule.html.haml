@@ -3,24 +3,24 @@
     %thead
       %tr
         %th.hour
-        - foreach_weekday do |weekday|
+        - @weekdays.each do |weekday|
           %th= weekday
     %tbody
-      - foreach_hour do |hour|
+      - @hours.each do |hour|
         %tr.hour
-          %td= hour_string_with hour
-          - foreach_weekday do
+          %td= hour_string_with(hour)
+          - @weekdays.each do
             %td.empty
         - unless last? hour
           %tr.half-hour
-            %td= halfhour_string_with hour
-            - foreach_weekday do
+            %td
+            - @weekdays.each do
               %td.empty
   .schedule
-    - schedule.each do |weekday|
-      %div{class: weekday_classes(weekday)}
+    - @schedule.each do |weekday|
+      %div{class: weekday_classes_for(weekday)}
         - weekday.periods.each do |period|
-          %div{class: period_classes(period)}
+          %div{class: period_classes_for(period)}
             .hour= format_time_of(period)
             .title
               .course= period.course

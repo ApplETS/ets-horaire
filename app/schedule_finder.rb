@@ -22,10 +22,9 @@ class ScheduleFinder
   end
 
   def self.conflicts_with?(groups_combinations, group)
-    index = groups_combinations.index do |comparable_group_course|
+    groups_combinations.none? do |comparable_group_course|
       comparable_group_course.conflicts?(group)
     end
-    index.nil?
   end
 
 end

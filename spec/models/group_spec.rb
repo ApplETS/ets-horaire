@@ -1,5 +1,4 @@
 require_relative "../../app/models/group"
-require_relative "../../app/models/period"
 
 describe Group do
 
@@ -16,8 +15,8 @@ describe Group do
   end
 
   describe "when creating a group with specific periods" do
-    let(:lecture) { Period::on("monday", "Cours").from("18:00").to("21:00") }
-    let(:practical_work) { Period::on("friday", "TP").from("18:00").to("21:00") }
+    let(:lecture) { mock Object }
+    let(:practical_work) { mock Object }
     let(:group) { Group.new(1).with lecture, practical_work }
 
     it "should return the appropriate periods" do

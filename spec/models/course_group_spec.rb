@@ -17,11 +17,11 @@ describe CourseGroup do
 
   describe "when checking for conflicting periods" do
     describe "when comparing two groups that have no conflicting periods" do
-      let(:lecture_1) { Period.on("monday", "Cours").from("18:00").to("21:00") }
-      let(:practical_work_1) { Period.on("friday", "TP").from("18:00").to("21:00") }
+      let(:lecture_1) { Period.on("monday").of_type("Cours").from("18:00").to("21:00") }
+      let(:practical_work_1) { Period.on("friday").of_type("TP").from("18:00").to("21:00") }
 
-      let(:lecture_2) { Period.on("monday", "Cours").from("9:00").to("12:00") }
-      let(:practical_work_2) { Period.on("friday", "TP").from("9:00").to("12:00") }
+      let(:lecture_2) { Period.on("monday").of_type("Cours").from("9:00").to("12:00") }
+      let(:practical_work_2) { Period.on("friday").of_type("TP").from("9:00").to("12:00") }
 
       describe "when the groups have course names that differ" do
         let(:group_1) { CourseGroup.new("LOG320", 1).with lecture_1, practical_work_1 }
@@ -45,12 +45,12 @@ describe CourseGroup do
     end
 
     describe "when comparing two groups that have conflicting periods" do
-      let(:conflicting_lecture_1) { Period.on("monday", "Cours").from("18:00").to("21:00") }
-      let(:practical_work_1) { Period.on("friday", "TP").from("18:00").to("21:00") }
+      let(:conflicting_lecture_1) { Period.on("monday").of_type("Cours").from("18:00").to("21:00") }
+      let(:practical_work_1) { Period.on("friday").of_type("TP").from("18:00").to("21:00") }
       let(:group_1) { CourseGroup.new("LOG550", 1).with conflicting_lecture_1, practical_work_1 }
 
-      let(:conflicting_lecture_2) { Period.on("monday", "Cours").from("16:00").to("19:00") }
-      let(:practical_work_2) { Period.on("friday", "TP").from("9:00").to("12:00") }
+      let(:conflicting_lecture_2) { Period.on("monday").of_type("Cours").from("16:00").to("19:00") }
+      let(:practical_work_2) { Period.on("friday").of_type("TP").from("9:00").to("12:00") }
       let(:group_2) { CourseGroup.new("GIA400", 2).with conflicting_lecture_2, practical_work_2 }
 
       it "should conflict" do

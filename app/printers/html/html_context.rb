@@ -21,39 +21,31 @@ class HtmlContext
   end
 
   def period_classes_for(period)
-    "period #{period.color} from-#{start_time_of period} duration-#{duration_of period}"
+    "period #{period.color} from-#{flat_time period.start_time} duration-#{duration_of period}"
   end
 
   def format_time_of(period)
-    "#{flat_time period.start_time} - #{flat_time period.end_time}"
-  end
-
-  def zerofill(hour)
-    hour.to_s.rjust(2, "0")
-  end
-
-  def start_time_of(period)
-    joined_flat_time period.start_time
+    "#{period.start_time.to_s} - #{period.end_time.to_s}"
   end
 
   def duration_of(period)
-    joined_flat_time period.end_time - period.start_time
-  end
-
-  def joined_flat_time(time)
-    "#{hour time}#{minutes time}"
+    "#{zerofill hour(period)}#{zerofill minutes(period)}"
   end
 
   def flat_time(time)
-    "#{hour time}:#{minutes time}"
+    "#{zerofill time.hour}#{zerofill time.minutes}"
   end
 
-  def hour(time)
-    zerofill (time / 60).floor
+  def hour(period)
+    (period.duration / 60).floor
   end
 
-  def minutes(time)
-    zerofill time % 60
+  def minutes(period)
+    period.duration % 60
+  end
+
+  def zerofill(time)
+    time.to_s.rjust(2, "0")
   end
 
 end

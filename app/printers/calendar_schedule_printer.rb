@@ -54,11 +54,11 @@ class CalendarSchedulePrinter
   end
 
   def self.print_start_line(period)
-    align_left zerofill_time(period.start_time_int), "-"
+    align_left zerofill_time(period.start_time.to_week_i), "-"
   end
 
   def self.start_line?(weekday, hour, period)
-    schedule_start_time = period.start_time_int - weekday - hour * MINUTES_PER_HOUR
+    schedule_start_time = period.start_time.to_week_i - weekday - hour * MINUTES_PER_HOUR
     schedule_start_time >= 0 && schedule_start_time < 60
   end
 
@@ -79,23 +79,23 @@ class CalendarSchedulePrinter
   end
 
   def self.description_line?(weekday, hour, period)
-    schedule_start_time = period.start_time_int - weekday - hour * MINUTES_PER_HOUR
+    schedule_start_time = period.start_time.to_week_i - weekday - hour * MINUTES_PER_HOUR
     schedule_start_time >= -60 && schedule_start_time < 0
   end
 
   def self.print_end_line(period)
-    align_right zerofill_time(period.end_time_int), "-"
+    align_right zerofill_time(period.end_time.to_week_i), "-"
   end
 
   def self.end_line?(weekday, hour, period)
-    schedule_end_time = period.end_time_int - weekday - hour * MINUTES_PER_HOUR
+    schedule_end_time = period.end_time.to_week_i - weekday - hour * MINUTES_PER_HOUR
     schedule_end_time >= 0 && schedule_end_time < 60
   end
 
   def self.print_full_line(start_line_period, end_line_period)
-    start_time = start_line_period.start_time_int % 60
+    start_time = start_line_period.start_time.to_week_i % 60
     start_time_zerofilled = start_time.to_s.rjust(2, "0")
-    end_time = end_line_period.end_time_int % 60
+    end_time = end_line_period.end_time.to_week_i % 60
     end_time_zerofilled = end_time.to_s.rjust(2, "0")
     justify start_time_zerofilled, end_time_zerofilled, "-"
   end

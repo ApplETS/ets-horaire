@@ -1,3 +1,4 @@
+require_relative "weekday_time"
 require_relative "weekday"
 
 class Period
@@ -5,42 +6,37 @@ class Period
   MINUTES_PER_HOUR = 60
   MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
 
-  attr_reader :type, :start_time, :end_time
+  attr_reader :weekday, :type, :start_time, :end_time
 
-  def initialize(weekday, type)
+  def initialize(weekday)
     @weekday = Weekday.en(weekday)
-    @type = type
     @weekday_minutes = @weekday.index * MINUTES_PER_DAY
-    @from_minutes = 0
-    @to_minutes = 0
   end
 
-  def self.on(weekday, type)
-    Period.new(weekday, type)
+  def self.on(weekday)
+    Period.new(weekday)
   end
 
   def from(time)
-    @start_time = time
-    @from_minutes = plain_time_to_int(time)
+    hour, minutes = time_split_int(time)
+    @start_time = WeekdayTime.on(@weekday).at(hour, minutes)
     self
   end
 
   def to(time)
-    @end_time = time
-    @to_minutes = plain_time_to_int(time)
+    hour, minutes = time_split_int(time)
+    @end_time = WeekdayTime.on(@weekday).at(hour, minutes)
     self
   end
 
-  def weekday
-    @weekday.en
+  def of_type(type)
+    @type = type
+    self
   end
 
-  def start_time_int
-    @weekday_minutes + @from_minutes
-  end
-
-  def end_time_int
-    @weekday_minutes + @to_minutes
+  def duration
+    return 0 if @start_time.nil? || @end_time.nil?
+    @end_time.to_weekday_i - @start_time.to_weekday_i
   end
 
   def conflicts?(period)
@@ -49,17 +45,23 @@ class Period
 
   private
 
-  def plain_time_to_int(plain_time)
-    hours, minutes = plain_time.split(":")
-    hours.to_i * MINUTES_PER_HOUR + minutes.to_i
+  def time_split_int(plain_time)
+    hour, minutes = plain_time.split(":")
+    [hour.to_i, minutes.to_i]
   end
 
   def before?(period)
-    period.start_time_int < start_time_int && period.start_time_int < end_time_int && period.end_time_int < start_time_int && period.end_time_int < end_time_int
+    period.start_time.to_week_i < @start_time.to_week_i &&
+    period.start_time.to_week_i < @end_time.to_week_i &&
+    period.end_time.to_week_i < @start_time.to_week_i &&
+    period.end_time.to_week_i < @end_time.to_week_i
   end
 
   def after?(period)
-    period.start_time_int > start_time_int && period.start_time_int > end_time_int && period.end_time_int > start_time_int && period.end_time_int > end_time_int
+    period.start_time.to_week_i > @start_time.to_week_i &&
+    period.start_time.to_week_i > @end_time.to_week_i &&
+    period.end_time.to_week_i > @start_time.to_week_i &&
+    period.end_time.to_week_i > @end_time.to_week_i
   end
 
 end

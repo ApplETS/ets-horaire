@@ -4,7 +4,7 @@ require_relative "../models/weekday"
 class PeriodBuilder
 
   def self.build(period_struct)
-    Period.on(en_weekday_from(period_struct), period_struct.type).from(period_struct.start_time).to(period_struct.end_time)
+    Period.on(en_weekday_from(period_struct)).of_type(period_struct.type).from(period_struct.start_time).to(period_struct.end_time)
   end
 
   private

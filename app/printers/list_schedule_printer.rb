@@ -26,7 +26,7 @@ class ListSchedulePrinter
   private
 
   def self.output_period(period)
-    "#{spacify(type period)}#{spacify(weekday period)}#{period.start_time} - #{period.end_time}\n"
+    "#{spacify(type period)}#{spacify(weekday period)}#{period.start_time.to_s} - #{period.end_time.to_s}\n"
   end
 
   def self.spacify(text = "")
@@ -39,7 +39,7 @@ class ListSchedulePrinter
   end
 
   def self.weekday(period)
-    Weekday.en(period.weekday).fr.capitalize
+    period.weekday.fr.capitalize
   end
 
 end

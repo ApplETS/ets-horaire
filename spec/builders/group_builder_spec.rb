@@ -41,7 +41,7 @@ describe GroupBuilder do
     end
 
     it "should have its first period on monday" do
-      period_1.weekday.should == "monday"
+      period_1.weekday.en.should == "monday"
     end
 
     it "should have its first period as a Cours type" do
@@ -49,15 +49,17 @@ describe GroupBuilder do
     end
 
     it "should have its first period from 16h" do
-      period_1.start_time.should == "16:00"
+      period_1.start_time.hour.should == 16
+      period_1.start_time.minutes.should == 0
     end
 
     it "should have its first period to 23h" do
-      period_1.end_time.should == "23:00"
+      period_1.end_time.hour.should == 23
+      period_1.end_time.minutes.should == 0
     end
 
     it "should have its second period on tuesday" do
-      period_2.weekday.should == "tuesday"
+      period_2.weekday.en.should == "tuesday"
     end
 
     it "should have its first period as a TP type" do
@@ -65,15 +67,17 @@ describe GroupBuilder do
     end
 
     it "should have its second period from 9h" do
-      period_2.start_time.should == "9:00"
+      period_2.start_time.hour.should == 9
+      period_2.start_time.minutes.should == 0
     end
 
     it "should have its second period to 9:05" do
-      period_2.end_time.should == "9:05"
+      period_2.end_time.hour.should == 9
+      period_2.end_time.minutes.should == 5
     end
 
     it "should have its third period on friday" do
-      period_3.weekday.should == "friday"
+      period_3.weekday.en.should == "friday"
     end
 
     it "should have its first period as a Lab type" do
@@ -81,15 +85,17 @@ describe GroupBuilder do
     end
 
     it "should have its third period from 8h" do
-      period_3.start_time.should == "8:00"
+      period_3.start_time.hour.should == 8
+      period_3.start_time.minutes.should == 0
     end
 
     it "should have its third period to 21h" do
-      period_3.end_time.should == "21:00"
+      period_3.end_time.hour.should == 21
+      period_3.end_time.minutes.should == 0
     end
 
     it "should have its fourth period on saturday" do
-      period_4.weekday.should == "saturday"
+      period_4.weekday.en.should == "saturday"
     end
 
     it "should have its first period as a Cours type" do
@@ -97,11 +103,13 @@ describe GroupBuilder do
     end
 
     it "should have its fourth period from 11:34" do
-      period_4.start_time.should == "11:34"
+      period_4.start_time.hour.should == 11
+      period_4.start_time.minutes.should == 34
     end
 
     it "should have its fourth period to 12:39" do
-      period_4.end_time.should == "12:39"
+      period_4.end_time.hour.should == 12
+      period_4.end_time.minutes.should == 39
     end
   end
 

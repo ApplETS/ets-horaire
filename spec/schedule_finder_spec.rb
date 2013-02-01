@@ -19,13 +19,13 @@ describe ScheduleFinder do
     end
 
     describe "when providing a single course" do
-      let(:period_1_5) { Period.on("friday", "Cours").from("6:00").to("7:00") }
+      let(:period_1_5) { Period.on("friday").of_type("Cours").from("6:00").to("7:00") }
       let(:group_5) { Group.new(5).with period_1_5 }
 
       let(:group_7) { Group.new(7) }
 
-      let(:period_1_8) { Period.on("monday", "Cours").from("6:00").to("7:00") }
-      let(:period_2_8) { Period.on("monday", "TP").from("9:00").to("10:00") }
+      let(:period_1_8) { Period.on("monday").of_type("Cours").from("6:00").to("7:00") }
+      let(:period_2_8) { Period.on("monday").of_type("TP").from("9:00").to("10:00") }
       let(:group_8) { Group.new(8).with period_1_8, period_2_8 }
 
       let(:course) { Course.new("LOG550").with group_5, group_7, group_8 }
@@ -78,57 +78,57 @@ describe ScheduleFinder do
 
     describe "when providing multiple courses" do
       # COM110
-      let(:period_1_1_1) { Period.on("thursday", "Cours").from("9:00").to("12:30") }
-      let(:period_2_1_1) { Period.on("tuesday", "TP").from("8:30").to("12:30") }
+      let(:period_1_1_1) { Period.on("thursday").of_type("Cours").from("9:00").to("12:30") }
+      let(:period_2_1_1) { Period.on("tuesday").of_type("TP").from("8:30").to("12:30") }
       let(:group_1_1) { Group.new(1).with period_1_1_1, period_2_1_1 }
 
-      let(:period_1_2_1) { Period.on("wednesday", "Cours").from("9:00").to("12:30") }
-      let(:period_2_2_1) { Period.on("monday", "TP").from("8:30").to("12:30") }
+      let(:period_1_2_1) { Period.on("wednesday").of_type("Cours").from("9:00").to("12:30") }
+      let(:period_2_2_1) { Period.on("monday").of_type("TP").from("8:30").to("12:30") }
       let(:group_2_1) { Group.new(2).with period_1_2_1, period_2_2_1 }
 
-      let(:period_1_3_1) { Period.on("monday", "Cours").from("18:00").to("21:30") }
-      let(:period_2_3_1) { Period.on("wednesday", "TP").from("18:00").to("22:00") }
+      let(:period_1_3_1) { Period.on("monday").of_type("Cours").from("18:00").to("21:30") }
+      let(:period_2_3_1) { Period.on("wednesday").of_type("TP").from("18:00").to("22:00") }
       let(:group_3_1) { Group.new(3).with period_1_3_1, period_2_3_1 }
 
-      let(:period_1_4_1) { Period.on("wednesday", "Cours").from("13:30").to("17:00") }
-      let(:period_2_4_1) { Period.on("friday", "TP").from("8:30").to("12:30") }
+      let(:period_1_4_1) { Period.on("wednesday").of_type("Cours").from("13:30").to("17:00") }
+      let(:period_2_4_1) { Period.on("friday").of_type("TP").from("8:30").to("12:30") }
       let(:group_4_1) { Group.new(4).with period_1_4_1, period_2_4_1 }
 
-      let(:period_1_5_1) { Period.on("thursday", "Cours").from("18:00").to("21:30") }
-      let(:period_2_5_1) { Period.on("tuesday", "TP").from("18:00").to("22:00") }
+      let(:period_1_5_1) { Period.on("thursday").of_type("Cours").from("18:00").to("21:30") }
+      let(:period_2_5_1) { Period.on("tuesday").of_type("TP").from("18:00").to("22:00") }
       let(:group_5_1) { Group.new(5).with period_1_5_1, period_2_5_1 }
 
       let(:course_1) { Course.new("COM110").with group_1_1, group_2_1, group_3_1, group_4_1, group_5_1 }
 
       # LOG320
-      let(:period_1_1_2) { Period.on("friday", "Cours").from("13:00").to("17:00") }
-      let(:period_2_1_2) { Period.on("tuesday", "TP").from("13:00").to("17:00") }
+      let(:period_1_1_2) { Period.on("friday").of_type("Cours").from("13:00").to("17:00") }
+      let(:period_2_1_2) { Period.on("tuesday").of_type("TP").from("13:00").to("17:00") }
       let(:group_1_2) { Group.new(1).with period_1_1_2, period_2_1_2 }
 
       let(:course_2) { Course.new("LOG320").with group_1_2 }
 
       # LOG330
-      let(:period_1_1_3) { Period.on("thursday", "Cours").from("18:00").to("21:00") }
-      let(:period_2_1_3) { Period.on("friday", "TP").from("18:00").to("20:00") }
+      let(:period_1_1_3) { Period.on("thursday").of_type("Cours").from("18:00").to("21:00") }
+      let(:period_2_1_3) { Period.on("friday").of_type("TP").from("18:00").to("20:00") }
       let(:group_1_3) { Group.new(1).with period_1_1_3, period_2_1_3 }
 
-      let(:period_1_2_3) { Period.on("monday", "Cours").from("18:00").to("21:00") }
-      let(:period_2_2_3) { Period.on("tuesday", "TP").from("9:00").to("12:00") }
+      let(:period_1_2_3) { Period.on("monday").of_type("Cours").from("18:00").to("21:00") }
+      let(:period_2_2_3) { Period.on("tuesday").of_type("TP").from("9:00").to("12:00") }
       let(:group_2_3) { Group.new(2).with period_1_2_3, period_2_2_3 }
 
       let(:course_3) { Course.new("LOG330").with group_1_3, group_2_3 }
 
       # GIA400
-      let(:period_1_1_4) { Period.on("tuesday", "Cours").from("18:00").to("21:00") }
-      let(:period_2_1_4) { Period.on("friday", "TP").from("9:00").to("12:00") }
+      let(:period_1_1_4) { Period.on("tuesday").of_type("Cours").from("18:00").to("21:00") }
+      let(:period_2_1_4) { Period.on("friday").of_type("TP").from("9:00").to("12:00") }
       let(:group_1_4) { Group.new(1).with period_1_1_4, period_2_1_4 }
 
-      let(:period_1_2_4) { Period.on("friday", "Cours").from("13:00").to("17:00") }
-      let(:period_2_2_4) { Period.on("monday", "TP").from("13:00").to("17:00") }
+      let(:period_1_2_4) { Period.on("friday").of_type("Cours").from("13:00").to("17:00") }
+      let(:period_2_2_4) { Period.on("monday").of_type("TP").from("13:00").to("17:00") }
       let(:group_2_4) { Group.new(2).with period_1_2_4, period_2_2_4 }
 
-      let(:period_1_3_4) { Period.on("wednesday", "Cours").from("9:00").to("12:00") }
-      let(:period_2_3_4) { Period.on("monday", "TP").from("9:00").to("12:00") }
+      let(:period_1_3_4) { Period.on("wednesday").of_type("Cours").from("9:00").to("12:00") }
+      let(:period_2_3_4) { Period.on("monday").of_type("TP").from("9:00").to("12:00") }
       let(:group_3_4) { Group.new(3).with period_1_3_4, period_2_3_4 }
 
       let(:course_4) { Course.new("GIA400").with group_1_4, group_2_4, group_3_4 }

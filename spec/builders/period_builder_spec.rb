@@ -16,7 +16,7 @@ describe PeriodBuilder do
         let(:period) { PeriodBuilder.build period_struct }
 
         it "should build a period with the english weekday \"#{en_weekday}\"" do
-          period.weekday.should == en_weekday
+          period.weekday.en.should == en_weekday
         end
       end
     end
@@ -30,11 +30,13 @@ describe PeriodBuilder do
       end
 
       it "should build a period with the appropriate start time" do
-        period.start_time.should == "16:00"
+        period.start_time.hour.should == 16
+        period.start_time.minutes.should == 0
       end
 
       it "should build a period with the appropriate end time" do
-        period.end_time.should == "20:00"
+        period.end_time.hour.should == 20
+        period.end_time.minutes.should == 0
       end
     end
 end

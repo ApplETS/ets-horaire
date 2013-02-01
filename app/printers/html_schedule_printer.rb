@@ -11,7 +11,7 @@ class HtmlSchedulePrinter
   HOURS = (8..23)
 
   WeekdayStruct = Struct.new(:name, :periods)
-  PeriodStruct = Struct.new(:color, :start_time, :end_time, :course, :type)
+  PeriodStruct = Struct.new(:color, :start_time, :end_time, :duration, :course, :type)
 
   def self.css
     open("stylesheet.css.sass.erb") do |erb|
@@ -52,13 +52,13 @@ class HtmlSchedulePrinter
       weekdays = []
       schedule.each do |course_group|
         course_group.periods.each do |period|
-          if weekdays.none? { |weekday| weekday.name == period.weekday }
+          if weekdays.none? { |weekday| weekday.name == period.weekday.en }
             periods = []
-            weekdays << WeekdayStruct.new(period.weekday, periods)
+            weekdays << WeekdayStruct.new(period.weekday.en, periods)
           else
-            periods = (weekdays.find { |weekday| weekday.name == period.weekday }).periods
+            periods = (weekdays.find { |weekday| weekday.name == period.weekday.en }).periods
           end
-          periods << PeriodStruct.new("red", period.instance_variable_get(:@from_minutes), period.instance_variable_get(:@to_minutes), "#{course_group.course_name}-#{course_group.nb}", period.type)
+          periods << PeriodStruct.new("red", period.start_time, period.end_time, period.duration, "#{course_group.course_name}-#{course_group.nb}", period.type)
         end
       end
       html_schedules << weekdays

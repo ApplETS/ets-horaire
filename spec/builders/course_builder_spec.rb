@@ -55,7 +55,7 @@ describe CourseBuilder do
       end
 
       it "should have group 5 firsts period on monday" do
-        course_1_5.weekday.should == "monday"
+        course_1_5.weekday.en.should == "monday"
       end
 
       it "should have group 5 firsts period as a Cours type" do
@@ -63,11 +63,13 @@ describe CourseBuilder do
       end
 
       it "should have group 5 firsts period start at 20h" do
-        course_1_5.start_time.should == "20:00"
+        course_1_5.start_time.hour.should == 20
+        course_1_5.start_time.minutes.should == 0
       end
 
       it "should have group 5 firsts period end at 21h" do
-        course_1_5.end_time.should == "21:00"
+        course_1_5.end_time.hour.should == 21
+        course_1_5.end_time.minutes.should == 0
       end
 
       it "should have a group 9" do
@@ -87,7 +89,7 @@ describe CourseBuilder do
       end
 
       it "should have group 12 firsts period on tuesday" do
-        course_1_12.weekday.should == "tuesday"
+        course_1_12.weekday.en.should == "tuesday"
       end
 
       it "should have group 12 firsts period as a TP type" do
@@ -95,15 +97,17 @@ describe CourseBuilder do
       end
 
       it "should have group 12 firsts period start at 6h" do
-        course_1_12.start_time.should == "6:00"
+        course_1_12.start_time.hour.should == 6
+        course_1_12.start_time.minutes.should == 0
       end
 
       it "should have group 12 firsts period end at 11h" do
-        course_1_12.end_time.should == "11:00"
+        course_1_12.end_time.hour.should == 11
+        course_1_12.end_time.minutes.should == 0
       end
 
       it "should have group 12 second period on friday" do
-        course_2_12.weekday.should == "friday"
+        course_2_12.weekday.en.should == "friday"
       end
 
       it "should have group 12 firsts period as a TP type" do
@@ -111,11 +115,13 @@ describe CourseBuilder do
       end
 
       it "should have group 12 second period start at 13h" do
-        course_2_12.start_time.should == "13:00"
+        course_2_12.start_time.hour.should == 13
+        course_2_12.start_time.minutes.should == 0
       end
 
       it "should have group 12 second period end at 16h" do
-        course_2_12.end_time.should == "16:00"
+        course_2_12.end_time.hour.should == 16
+        course_2_12.end_time.minutes.should == 0
       end
     end
   end

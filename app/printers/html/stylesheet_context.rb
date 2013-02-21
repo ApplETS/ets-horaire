@@ -2,7 +2,7 @@ class StylesheetContext
 
   COLUMN_WIDTH = 150
   ROW_HEIGHT = 15
-  PERIOD_PADDING = 10
+  PERIOD_PADDING = 5
 
   def initialize(weekdays, hours)
     @weekdays = weekdays

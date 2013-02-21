@@ -1,69 +1,29 @@
-require "erb"
-require "sass"
-require "compass"
 require "haml"
-require_relative "../models/weekday"
-require_relative "html/stylesheet_context"
-require_relative "html/html_context"
+require_relative "html/webpage_builder"
 
 class HtmlSchedulePrinter
 
-  HOURS = (8..23)
-
-  WeekdayStruct = Struct.new(:name, :periods)
-  PeriodStruct = Struct.new(:color, :start_time, :end_time, :duration, :course, :type)
-
-  def self.css
-    open("stylesheet.css.sass.erb") do |erb|
-      stylesheet_context = StylesheetContext.new(weekdays_en, HOURS)
-      sass = ERB.new(erb.read).result(stylesheet_context.get_binding)
-      Sass::Engine.new(sass, Compass.configuration.to_sass_engine_options).render
+  def self.output(schedules, output_folder)
+    html = nil
+    css = WebpageBuilder.css
+    html_schedules = WebpageBuilder.html(schedules)
+    open_template do |haml|
+      html = Haml::Engine.new(haml.read).render(Object.new, content: html_schedules)
     end
-  end
 
-  def self.html(schedules)
-    open("schedule.html.haml") do |haml|
-      template = haml.read
-      html = process(schedules).collect do |schedule|
-        html_context = HtmlContext.new(weekdays_fr, HOURS, schedule)
-        Haml::Engine.new(template).render(html_context)
-      end
-      html.join
-    end
+    css_folder = File.join(output_folder, "css")
+
+    Dir.mkdir output_folder unless File.directory? output_folder
+    Dir.mkdir css_folder unless File.directory? css_folder
+    FileUtils.cp File.join(File.dirname(__FILE__), "./html/ressources/normalize.css"), css_folder
+    File.open(File.join(output_folder, "css/stylesheet.css"), "w") { |f| f.write css }
+    File.open(File.join(output_folder, "index.html"), "w") { |f| f.write html }
   end
 
   private
 
-  def self.open(ressource_name, &block)
-    File.open(File.join(File.dirname(__FILE__), "./html/ressources/#{ressource_name}"), "r", &block)
-  end
-
-  def self.weekdays_en
-    Weekday::LANGUAGES[:EN].first(5)
-  end
-
-  def self.weekdays_fr
-    Weekday::LANGUAGES[:FR].first(5).collect { |weekday| weekday.capitalize }
-  end
-
-  def self.process(schedules)
-    html_schedules = []
-    schedules.each do |schedule|
-      weekdays = []
-      schedule.each do |course_group|
-        course_group.periods.each do |period|
-          if weekdays.none? { |weekday| weekday.name == period.weekday.en }
-            periods = []
-            weekdays << WeekdayStruct.new(period.weekday.en, periods)
-          else
-            periods = (weekdays.find { |weekday| weekday.name == period.weekday.en }).periods
-          end
-          periods << PeriodStruct.new("red", period.start_time, period.end_time, period.duration, "#{course_group.course_name}-#{course_group.nb}", period.type)
-        end
-      end
-      html_schedules << weekdays
-    end
-    html_schedules
+  def self.open_template(&block)
+    File.open(File.join(File.dirname(__FILE__), "./html/ressources/output_template.html.haml"), "r", &block)
   end
 
 end

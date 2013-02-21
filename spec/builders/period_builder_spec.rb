@@ -21,12 +21,21 @@ describe PeriodBuilder do
       end
     end
 
-    describe "when building a period" do
-      let(:period_struct) { PeriodStruct.new "mer", "16:00", "20:00", "Cours" }
+    describe "when building a course" do
+      let(:period_struct) { PeriodStruct.new "lun", "13:00", "14:00", "C" }
       let(:period) { PeriodBuilder.build period_struct }
 
       it "should build the period with the Cours as the type" do
         period.type.should == "Cours"
+      end
+    end
+
+    describe "when building a period" do
+      let(:period_struct) { PeriodStruct.new "mer", "16:00", "20:00", "Lab" }
+      let(:period) { PeriodBuilder.build period_struct }
+
+      it "should build the period with the Lab as the type" do
+        period.type.should == "Lab"
       end
 
       it "should build a period with the appropriate start time" do

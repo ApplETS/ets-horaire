@@ -83,27 +83,27 @@
 }
 /* line 68 */
 .weekly-calendar .schedule .weekday .period.period-2 {
-  background-color: #fff467;
+  background-color: #f68e55;
 }
 /* line 71 */
 .weekly-calendar .schedule .weekday .period.period-3 {
-  background-color: #3bb878;
+  background-color: #fbaf5c;
 }
 /* line 74 */
 .weekly-calendar .schedule .weekday .period.period-4 {
-  background-color: #00bff3;
+  background-color: #fff467;
 }
 /* line 77 */
 .weekly-calendar .schedule .weekday .period.period-5 {
-  background-color: #f06ea9;
+  background-color: #acd372;
 }
 /* line 80 */
 .weekly-calendar .schedule .weekday .period.period-6 {
-  background-color: #fbaf5c;
+  background-color: #7cc576;
 }
 /* line 83 */
 .weekly-calendar .schedule .weekday .period.period-7 {
-  background-color: #855fa8;
+  background-color: #3bb878;
 }
 /* line 86 */
 .weekly-calendar .schedule .weekday .period.period-8 {
@@ -111,11 +111,11 @@
 }
 /* line 89 */
 .weekly-calendar .schedule .weekday .period.period-9 {
-  background-color: #f26d7d;
+  background-color: #00bff3;
 }
 /* line 92 */
 .weekly-calendar .schedule .weekday .period.period-10 {
-  background-color: #00bff3;
+  background-color: #438cca;
 }
 /* line 95 */
 .weekly-calendar .schedule .weekday .period.period-11 {
@@ -127,547 +127,543 @@
 }
 /* line 101 */
 .weekly-calendar .schedule .weekday .period.period-13 {
-  background-color: #a763a8;
+  background-color: #855fa8;
 }
 /* line 104 */
 .weekly-calendar .schedule .weekday .period.period-14 {
-  background-color: #acd372;
+  background-color: #a763a8;
 }
 /* line 107 */
 .weekly-calendar .schedule .weekday .period.period-15 {
-  background-color: #f68e55;
+  background-color: #f06ea9;
 }
 /* line 110 */
 .weekly-calendar .schedule .weekday .period.period-16 {
-  background-color: #438cca;
+  background-color: #f26d7d;
 }
 /* line 113 */
-.weekly-calendar .schedule .weekday .period.period-17 {
-  background-color: #7cc576;
-}
-/* line 116 */
 .weekly-calendar .schedule .weekday .period.from-0800 {
   top: 0px;
 }
-/* line 118 */
+/* line 115 */
 .weekly-calendar .schedule .weekday .period.from-0815 {
   top: 7px;
 }
-/* line 120 */
+/* line 117 */
 .weekly-calendar .schedule .weekday .period.from-0830 {
   top: 15px;
 }
-/* line 122 */
+/* line 119 */
 .weekly-calendar .schedule .weekday .period.from-0845 {
   top: 22px;
 }
-/* line 124 */
+/* line 121 */
 .weekly-calendar .schedule .weekday .period.from-0900 {
   top: 30px;
 }
-/* line 126 */
+/* line 123 */
 .weekly-calendar .schedule .weekday .period.from-0915 {
   top: 37px;
 }
-/* line 128 */
+/* line 125 */
 .weekly-calendar .schedule .weekday .period.from-0930 {
   top: 45px;
 }
-/* line 130 */
+/* line 127 */
 .weekly-calendar .schedule .weekday .period.from-0945 {
   top: 52px;
 }
-/* line 132 */
+/* line 129 */
 .weekly-calendar .schedule .weekday .period.from-1000 {
   top: 60px;
 }
-/* line 134 */
+/* line 131 */
 .weekly-calendar .schedule .weekday .period.from-1015 {
   top: 67px;
 }
-/* line 136 */
+/* line 133 */
 .weekly-calendar .schedule .weekday .period.from-1030 {
   top: 75px;
 }
-/* line 138 */
+/* line 135 */
 .weekly-calendar .schedule .weekday .period.from-1045 {
   top: 82px;
 }
-/* line 140 */
+/* line 137 */
 .weekly-calendar .schedule .weekday .period.from-1100 {
   top: 90px;
 }
-/* line 142 */
+/* line 139 */
 .weekly-calendar .schedule .weekday .period.from-1115 {
   top: 97px;
 }
-/* line 144 */
+/* line 141 */
 .weekly-calendar .schedule .weekday .period.from-1130 {
   top: 105px;
 }
-/* line 146 */
+/* line 143 */
 .weekly-calendar .schedule .weekday .period.from-1145 {
   top: 112px;
 }
-/* line 148 */
+/* line 145 */
 .weekly-calendar .schedule .weekday .period.from-1200 {
   top: 120px;
 }
-/* line 150 */
+/* line 147 */
 .weekly-calendar .schedule .weekday .period.from-1215 {
   top: 127px;
 }
-/* line 152 */
+/* line 149 */
 .weekly-calendar .schedule .weekday .period.from-1230 {
   top: 135px;
 }
-/* line 154 */
+/* line 151 */
 .weekly-calendar .schedule .weekday .period.from-1245 {
   top: 142px;
 }
-/* line 156 */
+/* line 153 */
 .weekly-calendar .schedule .weekday .period.from-1300 {
   top: 150px;
 }
-/* line 158 */
+/* line 155 */
 .weekly-calendar .schedule .weekday .period.from-1315 {
   top: 157px;
 }
-/* line 160 */
+/* line 157 */
 .weekly-calendar .schedule .weekday .period.from-1330 {
   top: 165px;
 }
-/* line 162 */
+/* line 159 */
 .weekly-calendar .schedule .weekday .period.from-1345 {
   top: 172px;
 }
-/* line 164 */
+/* line 161 */
 .weekly-calendar .schedule .weekday .period.from-1400 {
   top: 180px;
 }
-/* line 166 */
+/* line 163 */
 .weekly-calendar .schedule .weekday .period.from-1415 {
   top: 187px;
 }
-/* line 168 */
+/* line 165 */
 .weekly-calendar .schedule .weekday .period.from-1430 {
   top: 195px;
 }
-/* line 170 */
+/* line 167 */
 .weekly-calendar .schedule .weekday .period.from-1445 {
   top: 202px;
 }
-/* line 172 */
+/* line 169 */
 .weekly-calendar .schedule .weekday .period.from-1500 {
   top: 210px;
 }
-/* line 174 */
+/* line 171 */
 .weekly-calendar .schedule .weekday .period.from-1515 {
   top: 217px;
 }
-/* line 176 */
+/* line 173 */
 .weekly-calendar .schedule .weekday .period.from-1530 {
   top: 225px;
 }
-/* line 178 */
+/* line 175 */
 .weekly-calendar .schedule .weekday .period.from-1545 {
   top: 232px;
 }
-/* line 180 */
+/* line 177 */
 .weekly-calendar .schedule .weekday .period.from-1600 {
   top: 240px;
 }
-/* line 182 */
+/* line 179 */
 .weekly-calendar .schedule .weekday .period.from-1615 {
   top: 247px;
 }
-/* line 184 */
+/* line 181 */
 .weekly-calendar .schedule .weekday .period.from-1630 {
   top: 255px;
 }
-/* line 186 */
+/* line 183 */
 .weekly-calendar .schedule .weekday .period.from-1645 {
   top: 262px;
 }
-/* line 188 */
+/* line 185 */
 .weekly-calendar .schedule .weekday .period.from-1700 {
   top: 270px;
 }
-/* line 190 */
+/* line 187 */
 .weekly-calendar .schedule .weekday .period.from-1715 {
   top: 277px;
 }
-/* line 192 */
+/* line 189 */
 .weekly-calendar .schedule .weekday .period.from-1730 {
   top: 285px;
 }
-/* line 194 */
+/* line 191 */
 .weekly-calendar .schedule .weekday .period.from-1745 {
   top: 292px;
 }
-/* line 196 */
+/* line 193 */
 .weekly-calendar .schedule .weekday .period.from-1800 {
   top: 300px;
 }
-/* line 198 */
+/* line 195 */
 .weekly-calendar .schedule .weekday .period.from-1815 {
   top: 307px;
 }
-/* line 200 */
+/* line 197 */
 .weekly-calendar .schedule .weekday .period.from-1830 {
   top: 315px;
 }
-/* line 202 */
+/* line 199 */
 .weekly-calendar .schedule .weekday .period.from-1845 {
   top: 322px;
 }
-/* line 204 */
+/* line 201 */
 .weekly-calendar .schedule .weekday .period.from-1900 {
   top: 330px;
 }
-/* line 206 */
+/* line 203 */
 .weekly-calendar .schedule .weekday .period.from-1915 {
   top: 337px;
 }
-/* line 208 */
+/* line 205 */
 .weekly-calendar .schedule .weekday .period.from-1930 {
   top: 345px;
 }
-/* line 210 */
+/* line 207 */
 .weekly-calendar .schedule .weekday .period.from-1945 {
   top: 352px;
 }
-/* line 212 */
+/* line 209 */
 .weekly-calendar .schedule .weekday .period.from-2000 {
   top: 360px;
 }
-/* line 214 */
+/* line 211 */
 .weekly-calendar .schedule .weekday .period.from-2015 {
   top: 367px;
 }
-/* line 216 */
+/* line 213 */
 .weekly-calendar .schedule .weekday .period.from-2030 {
   top: 375px;
 }
-/* line 218 */
+/* line 215 */
 .weekly-calendar .schedule .weekday .period.from-2045 {
   top: 382px;
 }
-/* line 220 */
+/* line 217 */
 .weekly-calendar .schedule .weekday .period.from-2100 {
   top: 390px;
 }
-/* line 222 */
+/* line 219 */
 .weekly-calendar .schedule .weekday .period.from-2115 {
   top: 397px;
 }
-/* line 224 */
+/* line 221 */
 .weekly-calendar .schedule .weekday .period.from-2130 {
   top: 405px;
 }
-/* line 226 */
+/* line 223 */
 .weekly-calendar .schedule .weekday .period.from-2145 {
   top: 412px;
 }
-/* line 228 */
+/* line 225 */
 .weekly-calendar .schedule .weekday .period.from-2200 {
   top: 420px;
 }
-/* line 230 */
+/* line 227 */
 .weekly-calendar .schedule .weekday .period.from-2215 {
   top: 427px;
 }
-/* line 232 */
+/* line 229 */
 .weekly-calendar .schedule .weekday .period.from-2230 {
   top: 435px;
 }
-/* line 234 */
+/* line 231 */
 .weekly-calendar .schedule .weekday .period.from-2245 {
   top: 442px;
 }
-/* line 236 */
+/* line 233 */
 .weekly-calendar .schedule .weekday .period.from-2300 {
   top: 450px;
 }
-/* line 238 */
+/* line 235 */
 .weekly-calendar .schedule .weekday .period.from-2315 {
   top: 457px;
 }
-/* line 240 */
+/* line 237 */
 .weekly-calendar .schedule .weekday .period.from-2330 {
   top: 465px;
 }
-/* line 242 */
+/* line 239 */
 .weekly-calendar .schedule .weekday .period.from-2345 {
   top: 472px;
 }
-/* line 245 */
+/* line 242 */
 .weekly-calendar .schedule .weekday .period.duration-0000 {
   height: -10px;
 }
-/* line 247 */
+/* line 244 */
 .weekly-calendar .schedule .weekday .period.duration-0015 {
   height: -3px;
 }
-/* line 249 */
+/* line 246 */
 .weekly-calendar .schedule .weekday .period.duration-0030 {
   height: 5px;
 }
-/* line 251 */
+/* line 248 */
 .weekly-calendar .schedule .weekday .period.duration-0045 {
   height: 12px;
 }
-/* line 253 */
+/* line 250 */
 .weekly-calendar .schedule .weekday .period.duration-0100 {
   height: 20px;
 }
-/* line 255 */
+/* line 252 */
 .weekly-calendar .schedule .weekday .period.duration-0115 {
   height: 27px;
 }
-/* line 257 */
+/* line 254 */
 .weekly-calendar .schedule .weekday .period.duration-0130 {
   height: 35px;
 }
-/* line 259 */
+/* line 256 */
 .weekly-calendar .schedule .weekday .period.duration-0145 {
   height: 42px;
 }
-/* line 261 */
+/* line 258 */
 .weekly-calendar .schedule .weekday .period.duration-0200 {
   height: 50px;
 }
-/* line 263 */
+/* line 260 */
 .weekly-calendar .schedule .weekday .period.duration-0215 {
   height: 57px;
 }
-/* line 265 */
+/* line 262 */
 .weekly-calendar .schedule .weekday .period.duration-0230 {
   height: 65px;
 }
-/* line 267 */
+/* line 264 */
 .weekly-calendar .schedule .weekday .period.duration-0245 {
   height: 72px;
 }
-/* line 269 */
+/* line 266 */
 .weekly-calendar .schedule .weekday .period.duration-0300 {
   height: 80px;
 }
-/* line 271 */
+/* line 268 */
 .weekly-calendar .schedule .weekday .period.duration-0315 {
   height: 87px;
 }
-/* line 273 */
+/* line 270 */
 .weekly-calendar .schedule .weekday .period.duration-0330 {
   height: 95px;
 }
-/* line 275 */
+/* line 272 */
 .weekly-calendar .schedule .weekday .period.duration-0345 {
   height: 102px;
 }
-/* line 277 */
+/* line 274 */
 .weekly-calendar .schedule .weekday .period.duration-0400 {
   height: 110px;
 }
-/* line 279 */
+/* line 276 */
 .weekly-calendar .schedule .weekday .period.duration-0415 {
   height: 117px;
 }
-/* line 281 */
+/* line 278 */
 .weekly-calendar .schedule .weekday .period.duration-0430 {
   height: 125px;
 }
-/* line 283 */
+/* line 280 */
 .weekly-calendar .schedule .weekday .period.duration-0445 {
   height: 132px;
 }
-/* line 285 */
+/* line 282 */
 .weekly-calendar .schedule .weekday .period.duration-0500 {
   height: 140px;
 }
-/* line 287 */
+/* line 284 */
 .weekly-calendar .schedule .weekday .period.duration-0515 {
   height: 147px;
 }
-/* line 289 */
+/* line 286 */
 .weekly-calendar .schedule .weekday .period.duration-0530 {
   height: 155px;
 }
-/* line 291 */
+/* line 288 */
 .weekly-calendar .schedule .weekday .period.duration-0545 {
   height: 162px;
 }
-/* line 293 */
+/* line 290 */
 .weekly-calendar .schedule .weekday .period.duration-0600 {
   height: 170px;
 }
-/* line 295 */
+/* line 292 */
 .weekly-calendar .schedule .weekday .period.duration-0615 {
   height: 177px;
 }
-/* line 297 */
+/* line 294 */
 .weekly-calendar .schedule .weekday .period.duration-0630 {
   height: 185px;
 }
-/* line 299 */
+/* line 296 */
 .weekly-calendar .schedule .weekday .period.duration-0645 {
   height: 192px;
 }
-/* line 301 */
+/* line 298 */
 .weekly-calendar .schedule .weekday .period.duration-0700 {
   height: 200px;
 }
-/* line 303 */
+/* line 300 */
 .weekly-calendar .schedule .weekday .period.duration-0715 {
   height: 207px;
 }
-/* line 305 */
+/* line 302 */
 .weekly-calendar .schedule .weekday .period.duration-0730 {
   height: 215px;
 }
-/* line 307 */
+/* line 304 */
 .weekly-calendar .schedule .weekday .period.duration-0745 {
   height: 222px;
 }
-/* line 309 */
+/* line 306 */
 .weekly-calendar .schedule .weekday .period.duration-0800 {
   height: 230px;
 }
-/* line 311 */
+/* line 308 */
 .weekly-calendar .schedule .weekday .period.duration-0815 {
   height: 237px;
 }
-/* line 313 */
+/* line 310 */
 .weekly-calendar .schedule .weekday .period.duration-0830 {
   height: 245px;
 }
-/* line 315 */
+/* line 312 */
 .weekly-calendar .schedule .weekday .period.duration-0845 {
   height: 252px;
 }
-/* line 317 */
+/* line 314 */
 .weekly-calendar .schedule .weekday .period.duration-0900 {
   height: 260px;
 }
-/* line 319 */
+/* line 316 */
 .weekly-calendar .schedule .weekday .period.duration-0915 {
   height: 267px;
 }
-/* line 321 */
+/* line 318 */
 .weekly-calendar .schedule .weekday .period.duration-0930 {
   height: 275px;
 }
-/* line 323 */
+/* line 320 */
 .weekly-calendar .schedule .weekday .period.duration-0945 {
   height: 282px;
 }
-/* line 325 */
+/* line 322 */
 .weekly-calendar .schedule .weekday .period.duration-1000 {
   height: 290px;
 }
-/* line 327 */
+/* line 324 */
 .weekly-calendar .schedule .weekday .period.duration-1015 {
   height: 297px;
 }
-/* line 329 */
+/* line 326 */
 .weekly-calendar .schedule .weekday .period.duration-1030 {
   height: 305px;
 }
-/* line 331 */
+/* line 328 */
 .weekly-calendar .schedule .weekday .period.duration-1045 {
   height: 312px;
 }
-/* line 333 */
+/* line 330 */
 .weekly-calendar .schedule .weekday .period.duration-1100 {
   height: 320px;
 }
-/* line 335 */
+/* line 332 */
 .weekly-calendar .schedule .weekday .period.duration-1115 {
   height: 327px;
 }
-/* line 337 */
+/* line 334 */
 .weekly-calendar .schedule .weekday .period.duration-1130 {
   height: 335px;
 }
-/* line 339 */
+/* line 336 */
 .weekly-calendar .schedule .weekday .period.duration-1145 {
   height: 342px;
 }
-/* line 341 */
+/* line 338 */
 .weekly-calendar .schedule .weekday .period.duration-1200 {
   height: 350px;
 }
-/* line 343 */
+/* line 340 */
 .weekly-calendar .schedule .weekday .period.duration-1215 {
   height: 357px;
 }
-/* line 345 */
+/* line 342 */
 .weekly-calendar .schedule .weekday .period.duration-1230 {
   height: 365px;
 }
-/* line 347 */
+/* line 344 */
 .weekly-calendar .schedule .weekday .period.duration-1245 {
   height: 372px;
 }
-/* line 349 */
+/* line 346 */
 .weekly-calendar .schedule .weekday .period.duration-1300 {
   height: 380px;
 }
-/* line 351 */
+/* line 348 */
 .weekly-calendar .schedule .weekday .period.duration-1315 {
   height: 387px;
 }
-/* line 353 */
+/* line 350 */
 .weekly-calendar .schedule .weekday .period.duration-1330 {
   height: 395px;
 }
-/* line 355 */
+/* line 352 */
 .weekly-calendar .schedule .weekday .period.duration-1345 {
   height: 402px;
 }
-/* line 357 */
+/* line 354 */
 .weekly-calendar .schedule .weekday .period.duration-1400 {
   height: 410px;
 }
-/* line 359 */
+/* line 356 */
 .weekly-calendar .schedule .weekday .period.duration-1415 {
   height: 417px;
 }
-/* line 361 */
+/* line 358 */
 .weekly-calendar .schedule .weekday .period.duration-1430 {
   height: 425px;
 }
-/* line 363 */
+/* line 360 */
 .weekly-calendar .schedule .weekday .period.duration-1445 {
   height: 432px;
 }
-/* line 365 */
+/* line 362 */
 .weekly-calendar .schedule .weekday .period.duration-1500 {
   height: 440px;
 }
-/* line 367 */
+/* line 364 */
 .weekly-calendar .schedule .weekday .period.duration-1515 {
   height: 447px;
 }
-/* line 369 */
+/* line 366 */
 .weekly-calendar .schedule .weekday .period.duration-1530 {
   height: 455px;
 }
-/* line 371 */
+/* line 368 */
 .weekly-calendar .schedule .weekday .period.duration-1545 {
   height: 462px;
 }
-/* line 375 */
+/* line 372 */
 .weekly-calendar .schedule .weekday .period .hour {
   margin-bottom: 5px;
   font-size: 12px;
   font-weight: bold;
 }
-/* line 380 */
+/* line 377 */
 .weekly-calendar .schedule .weekday .period .title .course {
   font-size: 14px;
 }
-/* line 382 */
+/* line 379 */
 .weekly-calendar .schedule .weekday .period .title .type {
   font-size: 12px;
 }

@@ -16,16 +16,22 @@ class Weekday
     short_lang_downcase = "short_#{lang_downcase}".to_sym
 
     define_singleton_method(lang_downcase) do |name|
-      index = LANGUAGES[lang].index { |weekday| weekday == name.downcase }
-      Weekday.new index
+      create_weekday_using(lang, name) { |weekday| weekday == name.downcase }
     end
 
     define_singleton_method(short_lang_downcase) do |name|
-      index = LANGUAGES[lang].index { |weekday| weekday[0..2] == name.downcase }
-      Weekday.new index
+      create_weekday_using(lang, name) { |weekday| weekday[0..2] == name.downcase }
     end
 
     define_method(lang_downcase) { LANGUAGES[lang][@index] }
+  end
+
+  private
+
+  def self.create_weekday_using(lang, name, &block)
+    index = LANGUAGES[lang].index(&block)
+    raise "'#{name}' is not a valid weekday." if index.nil?
+    Weekday.new index
   end
 
 end

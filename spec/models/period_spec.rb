@@ -42,6 +42,7 @@ describe Period do
       WeekdayTime.should_receive(:on).with(friday).and_return(end_time)
       end_time.should_receive(:at).with(13, 55).and_return(end_time)
     end
+
     let(:friday_lab) { Period::on("friday").of_type("Lab").from("5:45").to("13:55") }
 
     specify { friday_lab.weekday.should == friday }
@@ -49,6 +50,11 @@ describe Period do
     specify { friday_lab.start_time.should == start_time }
     specify { friday_lab.end_time.should == end_time }
     specify { friday_lab.duration.should == 490 }
+  end
+
+  describe "When creating a Cours on wednesday from 6h01 to 6h00" do
+    let(:course) { Period::on("wednesday").of_type("Cours").from("6:01").to("6:00") }
+    specify { expect { course }.to raise_error "the 'to' method must be called after the 'from' method and be bigger than the latter." }
   end
 
   describe "When checking for a conflict in a course" do
@@ -70,6 +76,16 @@ describe Period do
       it "should conflict" do
         first_period.conflicts?(second_period).should == true
         second_period.conflicts?(first_period).should == true
+      end
+    end
+
+    describe "When comparing one period contained in another" do
+      let(:internal_period) { Period::on("friday").of_type("TP").from("11:00").to("19:00") }
+      let(:external_period) { Period::on("friday").of_type("Lab").from("8:00").to("23:00") }
+
+      it "should conflict" do
+        internal_period.conflicts?(external_period).should == true
+        external_period.conflicts?(internal_period).should == true
       end
     end
     

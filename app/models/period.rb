@@ -26,6 +26,7 @@ class Period
   def to(time)
     hour, minutes = time_split_int(time)
     @end_time = WeekdayTime.on(@weekday).at(hour, minutes)
+    raise "the 'to' method must be called after the 'from' method and be bigger than the latter." if invalid_end_time?
     self
   end
 
@@ -45,6 +46,10 @@ class Period
 
   private
 
+  def invalid_end_time?
+    @start_time.to_week_i > @end_time.to_week_i
+  end
+
   def time_split_int(plain_time)
     hour, minutes = plain_time.split(":")
     [hour.to_i, minutes.to_i]
@@ -52,15 +57,11 @@ class Period
 
   def before?(period)
     period.start_time.to_week_i < @start_time.to_week_i &&
-    period.start_time.to_week_i < @end_time.to_week_i &&
-    period.end_time.to_week_i < @start_time.to_week_i &&
-    period.end_time.to_week_i < @end_time.to_week_i
+    period.end_time.to_week_i < @start_time.to_week_i
   end
 
   def after?(period)
-    period.start_time.to_week_i > @start_time.to_week_i &&
     period.start_time.to_week_i > @end_time.to_week_i &&
-    period.end_time.to_week_i > @start_time.to_week_i &&
     period.end_time.to_week_i > @end_time.to_week_i
   end
 

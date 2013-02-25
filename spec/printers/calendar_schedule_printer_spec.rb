@@ -7,6 +7,10 @@ describe CalendarSchedulePrinter do
   let(:stream) { mock(Object) }
 
   before(:each) do
+    File.stub(:open).with("output_file", "w").and_yield stream
+
+    stream.should_receive(:write).once.with "*******************************************************************************************\n"
+    stream.should_receive(:write).once.with "*******************************************************************************************\n\n"
     stream.should_receive(:write).once.with "     --------------------------------------------------------------------------------------\n"
     stream.should_receive(:write).once.with "     |Lundi           |Mardi           |Mercredi        |Jeudi           |Vendredi        |\n"
     stream.should_receive(:write).once.with "     --------------------------------------------------------------------------------------\n"
@@ -127,7 +131,8 @@ describe CalendarSchedulePrinter do
 
   after(:each) do
     stream.should_receive(:write).once.with "     --------------------------------------------------------------------------------------\n"
-    CalendarSchedulePrinter.print schedule, stream
+    stream.should_receive(:write).once.with "\n"
+    CalendarSchedulePrinter.output [schedule], "output_file"
   end
 
 end

@@ -11,6 +11,19 @@ class CalendarSchedulePrinter
   THURSDAY = 4320
   FRIDAY = 5760
 
+  def self.output(schedules, output_filename)
+    File.open(output_filename, "w") do |stream|
+      schedules.each do |schedule|
+        stream.write "*******************************************************************************************\n"
+        stream.write "*******************************************************************************************\n\n"
+        print schedule, stream
+        stream.write "\n"
+      end
+    end
+  end
+
+  private
+
   def self.print(schedule, stream)
     stream.write "     #{FULL_SCHEDULE_LINE}\n"
     stream.write "     |#{align_left "Lundi"}|#{align_left "Mardi"}|#{align_left "Mercredi"}|#{align_left "Jeudi"}|#{align_left "Vendredi"}|\n"
@@ -20,8 +33,6 @@ class CalendarSchedulePrinter
     end
     stream.write "     #{FULL_SCHEDULE_LINE}\n"
   end
-
-  private
 
   def self.print_line(hour, schedule)
     hour_zerofilled = hour.to_s.rjust(2, "0")

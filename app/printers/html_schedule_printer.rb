@@ -13,8 +13,8 @@ class HtmlSchedulePrinter
 
     css_folder = File.join(output_folder, "css")
 
-    Dir.mkdir output_folder unless File.directory? output_folder
-    Dir.mkdir css_folder unless File.directory? css_folder
+    Dir.mkdir(output_folder) unless File.directory? output_folder
+    Dir.mkdir(css_folder) unless File.directory? css_folder
     FileUtils.cp File.join(File.dirname(__FILE__), "./html/ressources/normalize.css"), css_folder
     File.open(File.join(output_folder, "css/stylesheet.css"), "w") { |f| f.write css }
     File.open(File.join(output_folder, "index.html"), "w") { |f| f.write html }

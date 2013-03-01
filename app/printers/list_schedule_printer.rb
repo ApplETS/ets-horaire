@@ -26,16 +26,12 @@ class ListSchedulePrinter
   private
 
   def self.output_period(period)
-    "#{spacify(type period)}#{spacify(weekday period)}#{period.start_time.to_s} - #{period.end_time.to_s}\n"
+    "#{spacify(period.type)}#{spacify(weekday period)}#{period.start_time.to_s} - #{period.end_time.to_s}\n"
   end
 
   def self.spacify(text = "")
     spaces = (15 - text.length).times.collect { " " }.join
     "#{text}#{spaces}"
-  end
-
-  def self.type(period)
-    (period.type == 'C' ? 'Cours' : period.type)
   end
 
   def self.weekday(period)

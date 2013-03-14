@@ -1,6 +1,9 @@
 # ÉTS - Horaire
 Programme qui calcule toutes les combinaisons possibles de cours à l'ÉTS, selon un fichier .pdf
 
+## Utilisation
+Modifiez le run.rb et roulez le!
+
 ## TODO:
 1. Pouvoir partir le programme en ligne de commande et:
  1. Y fournir un fichier en entrée (.pdf)
@@ -8,4 +11,6 @@ Programme qui calcule toutes les combinaisons possibles de cours à l'ÉTS, selo
  3. Y fournir le nombre de cours désirés
  4. Y fournir un type de sortie
  5. Y fournir une destination de sortie
-2. Convertir un .pdf fourni par l'école à un .txt automatiquement (pdftotext)
+
+2. Se connecter à signets et aller chercher les cours déjà fait.
+3. Aller chercher les cours de programme et leurs crédits pour pouvoir y aller par possibilité de crédits (ou nombre de cours)

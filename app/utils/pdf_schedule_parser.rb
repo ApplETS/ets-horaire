@@ -21,11 +21,11 @@ class PdfScheduleParser
 			if !course_match_data.nil?
 				course = CourseStruct.new(course_match_data[1], [])
 				courses << course
-			elsif !group_match_data.nil? && !course.nil?
+			elsif !group_match_data.nil? && !course.nil? && course.name != "PRE010"
 				group = GroupStruct.new(group_match_data[1].to_i, [])
 				group.periods << build_period(group_match_data[2..5])
 				course.groups << group
-			elsif !period_match_data.nil? && !group.nil?
+			elsif !period_match_data.nil? && !group.nil? && course.name != "PRE010"
 				group.periods << build_period(period_match_data[1..4])
 			end
 		end

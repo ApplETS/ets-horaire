@@ -1,4 +1,4 @@
-source :rubygems
+source "https://www.rubygems.org"
 
 gem "rspec"
 gem "middleman", "~>3.0.7"

@@ -1,5 +1,4 @@
 require "erb"
-require "sass"
 require "compass"
 require "haml"
 require_relative "../../models/weekday"

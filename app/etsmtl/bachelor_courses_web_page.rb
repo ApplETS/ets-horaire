@@ -31,8 +31,6 @@ module ETSMtl
         elsif row.all_profiles_line?
           current_profile_section = nil
         elsif row.course_line?
-          p "#{row.course_name} - #{row.prerequisites}"
-
           course = Course.new(row.course_name, row.nb_credits, row.prerequisites)
 
           if current_profile_section.nil?

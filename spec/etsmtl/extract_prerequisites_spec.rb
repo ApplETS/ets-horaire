@@ -11,7 +11,7 @@ describe ExtractPrerequisites do
 
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('MAT145', :prerequisite).and_return mat145
-      Relation.should_receive(:and).once.with(mat145).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [mat145]).and_return and_relation
     end
 
     it 'should return MAT145 as a prerequisite' do
@@ -26,7 +26,7 @@ describe ExtractPrerequisites do
 
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('CTN504', :prerequisite_or_concurrent).and_return ctn504
-      Relation.should_receive(:and).once.with(ctn504).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn504]).and_return and_relation
     end
 
     it 'should return CTN504 as a prerequisite or a concurrent course' do
@@ -43,7 +43,7 @@ describe ExtractPrerequisites do
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('CTN308', :prerequisite).and_return ctn308
       ExtractPrerequisites::Course.should_receive(:new).once.with('MAT165', :prerequisite).and_return mat165
-      Relation.should_receive(:and).once.with(ctn308, mat165).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn308, mat165]).and_return and_relation
     end
 
     it 'should return CTN308 and MAT165 as prerequisites' do
@@ -60,7 +60,7 @@ describe ExtractPrerequisites do
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('CTN200', :prerequisite).and_return ctn200
       ExtractPrerequisites::Course.should_receive(:new).once.with('GIA400', :prerequisite).and_return gia400
-      Relation.should_receive(:and).once.with(ctn200, gia400).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn200, gia400]).and_return and_relation
     end
 
     it 'should return CTN200 and GIA400 as prerequisites' do
@@ -77,7 +77,7 @@ describe ExtractPrerequisites do
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('INF135', :prerequisite).and_return inf135
       ExtractPrerequisites::Course.should_receive(:new).once.with('MEC329', :prerequisite_or_concurrent).and_return mec329
-      Relation.should_receive(:and).once.with(inf135, mec329).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [inf135, mec329]).and_return and_relation
     end
 
     it 'should return INF135 as a prerequisite and MEC329 as a prerequisite or a concurrent course' do
@@ -96,7 +96,7 @@ describe ExtractPrerequisites do
       ExtractPrerequisites::Course.should_receive(:new).once.with('MAT265', :prerequisite).and_return mat265
       ExtractPrerequisites::Course.should_receive(:new).once.with('MEC222', :prerequisite).and_return mec222
       ExtractPrerequisites::Course.should_receive(:new).once.with('MEC423', :prerequisite).and_return mec423
-      Relation.should_receive(:and).once.with(mat265, mec222, mec423).and_return and_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [mat265, mec222, mec423]).and_return and_relation
     end
 
     it 'should return MAT265, MEC222 and MEC423 as prerequisites' do
@@ -113,7 +113,7 @@ describe ExtractPrerequisites do
     before(:each) do
       ExtractPrerequisites::Course.should_receive(:new).once.with('PCC310', :prerequisite).and_return pcc310
       ExtractPrerequisites::Course.should_receive(:new).once.with('PCC317', :prerequisite).and_return pcc317
-      Relation.should_receive(:or).once.with(pcc310, pcc317).and_return or_relation
+      ExtractPrerequisites::Relation.should_receive(:new).once.with(:or, [pcc310, pcc317]).and_return or_relation
     end
 
     it 'should return PCC310 or PCC317 as a prerequisite' do

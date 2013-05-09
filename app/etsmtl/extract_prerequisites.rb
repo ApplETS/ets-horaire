@@ -3,6 +3,7 @@ class ExtractPrerequisites
   COURSE_INDEX = 1
 
   Course = Struct.new(:name, :type)
+  Relation = Struct.new(:type, :courses)
 
   def self.from(prerequisites_text)
     course_match = COURSES.match(prerequisites_text)
@@ -15,11 +16,7 @@ class ExtractPrerequisites
       Course.new(filtered_course_name, course_type)
     end
 
-    if relation_type == :or
-      Relation.or *courses
-    elsif relation_type == :and
-      Relation.and *courses
-    end
+    Relation.new relation_type, courses
   end
 
   private
@@ -27,21 +24,5 @@ class ExtractPrerequisites
   def self.extract_courses(course_match)
     course_names_text = course_match[COURSE_INDEX]
     course_names_text.split(/[,| |ou]+/)
-  end
-end
-
-class Relation
-  private_class_method :new
-  def initialize(type, *courses)
-    @type = type
-    @courses = courses
-  end
-
-  def self.and(*courses)
-    new(:and, *courses)
-  end
-
-  def self.or(*courses)
-    new(:or, *courses)
   end
 end

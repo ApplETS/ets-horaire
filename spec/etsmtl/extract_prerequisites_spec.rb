@@ -2,123 +2,72 @@
 
 require_relative '../../app/etsmtl/extract_prerequisites'
 
+shared_context 'prerequisite parsing' do
+  let(:prerequisite_text) { self.class.description }
+  subject { ExtractPrerequisites.from prerequisite_text }
+
+  def relation_double(relation_type, courses_dictionary)
+    courses = courses_dictionary.each_pair.collect do |course_type, course_names|
+      course_names.collect do |course_name|
+        course = double
+        ExtractPrerequisites::Course.should_receive(:new).once.with(course_name, course_type).and_return course
+        course
+      end
+    end
+    courses = courses.flatten
+
+    relation = double
+    ExtractPrerequisites::Relation.should_receive(:new).once.with(relation_type, courses).and_return relation
+    relation
+  end
+end
+
 describe ExtractPrerequisites do
+  include_context 'prerequisite parsing'
 
   context '(MAT145)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(MAT145)') }
-    let(:mat145) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MAT145', :prerequisite).and_return mat145
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [mat145]).and_return and_relation
-    end
-
-    it 'should return MAT145 as a prerequisite' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { { prerequisite: %w(MAT145) } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return MAT145 as a prerequisite') { should == and_relation }
   end
 
   context '(CTN504*)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(CTN504*)') }
-    let(:ctn504) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('CTN504', :prerequisite_or_concurrent).and_return ctn504
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn504]).and_return and_relation
-    end
-
-    it 'should return CTN504 as a prerequisite or a concurrent course' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { { prerequisite_or_concurrent: %w(CTN504) } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return CTN504 as a prerequisite or a concurrent course') { should == and_relation }
   end
 
   context '(CTN308, MAT165)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(CTN308, MAT165)') }
-    let(:ctn308) { double }
-    let(:mat165) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('CTN308', :prerequisite).and_return ctn308
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MAT165', :prerequisite).and_return mat165
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn308, mat165]).and_return and_relation
-    end
-
-    it 'should return CTN308 and MAT165 as prerequisites' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { { prerequisite: %w(CTN308 MAT165) } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return CTN308 and MAT165 as prerequisites') { should == and_relation }
   end
 
   context '(CTN200,GIA400)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(CTN200,GIA400)') }
-    let(:ctn200) { double }
-    let(:gia400) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('CTN200', :prerequisite).and_return ctn200
-      ExtractPrerequisites::Course.should_receive(:new).once.with('GIA400', :prerequisite).and_return gia400
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [ctn200, gia400]).and_return and_relation
-    end
-
-    it 'should return CTN200 and GIA400 as prerequisites' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { { prerequisite: %w(CTN200 GIA400) } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return CTN200 and GIA400 as prerequisites') { should == and_relation }
   end
 
   context '(INF135, MEC329*)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(INF135, MEC329*)') }
-    let(:inf135) { double }
-    let(:mec329) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('INF135', :prerequisite).and_return inf135
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MEC329', :prerequisite_or_concurrent).and_return mec329
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [inf135, mec329]).and_return and_relation
-    end
-
-    it 'should return INF135 as a prerequisite and MEC329 as a prerequisite or a concurrent course' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { {
+        prerequisite: %w(INF135),
+        prerequisite_or_concurrent: %w(MEC329)
+    } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return INF135 as a prerequisite and MEC329 as a prerequisite or a concurrent course') { should == and_relation }
   end
 
   context '(MAT265, MEC222, MEC423)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(MAT265, MEC222, MEC423)') }
-    let(:mat265) { double }
-    let(:mec222) { double }
-    let(:mec423) { double }
-    let(:and_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MAT265', :prerequisite).and_return mat265
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MEC222', :prerequisite).and_return mec222
-      ExtractPrerequisites::Course.should_receive(:new).once.with('MEC423', :prerequisite).and_return mec423
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:and, [mat265, mec222, mec423]).and_return and_relation
-    end
-
-    it 'should return MAT265, MEC222 and MEC423 as prerequisites' do
-      prerequisites.should == and_relation
-    end
+    let!(:prerequisites) { { prerequisite: %w(MAT265 MEC222 MEC423) } }
+    let!(:and_relation) { relation_double :and, prerequisites }
+    it('should return MAT265, MEC222 and MEC423 as prerequisites') { should == and_relation }
   end
 
   context '(PCC310 ou PCC317)' do
-    let(:prerequisites) { ExtractPrerequisites.from('(PCC310 ou PCC317)') }
-    let(:pcc310) { double }
-    let(:pcc317) { double }
-    let(:or_relation) { double }
-
-    before(:each) do
-      ExtractPrerequisites::Course.should_receive(:new).once.with('PCC310', :prerequisite).and_return pcc310
-      ExtractPrerequisites::Course.should_receive(:new).once.with('PCC317', :prerequisite).and_return pcc317
-      ExtractPrerequisites::Relation.should_receive(:new).once.with(:or, [pcc310, pcc317]).and_return or_relation
-    end
-
-    it 'should return PCC310 or PCC317 as a prerequisite' do
-      prerequisites.should == or_relation
-    end
+    let!(:prerequisites) { { prerequisite: %w(PCC310 PCC317) } }
+    let!(:or_relation) { relation_double :or, prerequisites }
+    it('should return PCC310 or PCC317 as a prerequisite') { should == or_relation }
   end
 
   context '(GPA205, sauf profil P)' do

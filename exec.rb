@@ -21,22 +21,30 @@ puts "*                                   *".blue
 puts "* * * * * * * * * * * * * * * * * * *".blue
 puts ""
 
-file_exists = false
+def input_view
+  puts "Veuillez rentrer le ficher de configuration:".light_blue
+
+  instance_variables = yield
+
+  if instance_variables[:file_exists]
+    puts ""
+    puts "Utilisation du fichier: ".light_blue + instance_variables[:config_file_path].yellow
+    puts ""
+  else
+    puts "Fichier invalide: ".red + instance_variables[:config_file_path].yellow
+  end
+end
+
 config_file_path = nil
-
 AutoCompleteFolderContents.in_setup do
+  file_exists = false
+
   while !file_exists
-    puts "Veuillez rentrer le ficher de configuration:".light_blue
+    input_view do
+      config_file_path = readline
+      file_exists = !File.directory?(config_file_path) && File.exists?(config_file_path)
 
-    config_file_path = readline
-    file_exists = File.exists?(config_file_path)
-
-    if file_exists
-      puts ""
-      puts "Utilisation du fichier: ".light_blue + config_file_path.yellow
-      puts ""
-    else
-      puts "Fichier invalide: ".red + config_file_path.yellow
+      {config_file_path: config_file_path, file_exists: file_exists}
     end
   end
 end
@@ -90,7 +98,6 @@ settings.output_types.keys.each do |output_type|
   output_destination = output_destinations[output_type]
   parameters[:class].send(:output, schedules, output_destination) unless parameters.nil?
 end
-
 
 # View
 settings.output_types.keys.each do |output_type|

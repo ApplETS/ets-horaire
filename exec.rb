@@ -4,7 +4,7 @@ require 'yaml'
 require 'colorize'
 require 'settingslogic'
 
-require_relative 'app/cli/auto_complete_readline'
+require_relative 'app/cli/auto_complete_folder_contents'
 require_relative 'app/utils/pdf_stream'
 require_relative 'app/utils/stream_course_builder'
 require_relative 'app/builders/course_builder'
@@ -14,60 +14,90 @@ require_relative 'app/printers/list_schedule_printer'
 require_relative 'app/printers/calendar_schedule_printer'
 require_relative 'app/printers/html_schedule_printer'
 
-BASE_DIR = File.dirname(__FILE__)
-
-puts "*********************************".blue
-puts "* Calculateur d'horaire à l'ÉTS *".blue
-puts "*********************************".blue
+puts "* * * * * * * * * * * * * * * * * * *".blue
+puts "*                                   *".blue
+puts "*   Calculateur d'horaire à l'ÉTS   *".blue
+puts "*                                   *".blue
+puts "* * * * * * * * * * * * * * * * * * *".blue
 puts ""
 
 file_exists = false
 config_file_path = nil
-while !file_exists
-  puts "Veuillez rentrer le ficher de configuration:".light_blue
-  AutoCompleteReadline.readline do |input|
-    config_file_path = File.join(BASE_DIR, input.chomp)
 
+AutoCompleteFolderContents.in_setup do
+  while !file_exists
+    puts "Veuillez rentrer le ficher de configuration:".light_blue
+
+    config_file_path = readline
     file_exists = File.exists?(config_file_path)
+
     if file_exists
+      puts ""
       puts "Utilisation du fichier: ".light_blue + config_file_path.yellow
+      puts ""
     else
       puts "Fichier invalide: ".red + config_file_path.yellow
     end
   end
 end
 
-class String
-  def path
-    File.join(File.dirname(__FILE__), self)
-  end
-end
-
-Settings = Class.new(Settingslogic) do
-  source config_file_path
-end
-
-OUTPUT_DIR = Settings.output_folder.path
-
-LIST_OUTPUT_FILE = File.join(OUTPUT_DIR, Settings.output_types.list.output_file)
-CALENDAR_OUTPUT_FILE = File.join(OUTPUT_DIR, Settings.output_types.calendar.output_file)
-HTML_OUTPUT_FOLDER = File.join(OUTPUT_DIR, Settings.output_types.html.output_folder)
+settings = Class.new(Settingslogic) { source config_file_path }
 
 # -------------
 # Begin program
 # -------------
-FileUtils.rm_rf(OUTPUT_DIR) if File.directory?(OUTPUT_DIR)
-Dir.mkdir(OUTPUT_DIR)
+FileUtils.rm_rf(settings.output_folder) if File.directory?(settings.output_folder)
+Dir.mkdir(settings.output_folder)
 
-courses_stream = PdfStream.from_file(Settings.input.path)
+courses_stream = PdfStream.from_file(settings.input)
 
 courses_struct = StreamCourseBuilder.build_courses_from(courses_stream)
-courses_struct.select! { |course_struct| Settings.wanted_courses.include? course_struct.name }
+courses_struct.select! { |course_struct| settings.wanted_courses.include? course_struct.name }
 courses = courses_struct.collect { |course_struct| CourseBuilder.build course_struct }
 CourseUtils.cleanup! courses
 
-schedules = ScheduleFinder.combinations_for(courses, Settings.filters.courses_per_schedule)
+schedules = ScheduleFinder.combinations_for(courses, settings.filters.courses_per_schedule)
 
-ListSchedulePrinter.output schedules, LIST_OUTPUT_FILE
-CalendarSchedulePrinter.output schedules, CALENDAR_OUTPUT_FILE
-HtmlSchedulePrinter.output schedules, HTML_OUTPUT_FOLDER
+POSSIBLE_OUTPUT_TYPES = {
+  'list' => {
+    class: ListSchedulePrinter,
+    output_destination_key: 'output_file'
+  },
+  'calendar' => {
+    class: CalendarSchedulePrinter,
+    output_destination_key: 'output_file'
+  },
+  'html' => {
+    class: HtmlSchedulePrinter,
+    output_destination_key: 'output_folder'
+  },
+}
+
+# Controller
+output_destinations = {}
+settings.output_types.each_pair.collect do |output_type, output_settings|
+  parameters = POSSIBLE_OUTPUT_TYPES[output_type]
+
+  unless parameters.nil?
+    output_destination_key = parameters[:output_destination_key]
+    output_destination = File.join(settings.output_folder, output_settings[output_destination_key])
+    output_destinations[output_type] = output_destination
+  end
+end
+
+settings.output_types.keys.each do |output_type|
+  parameters = POSSIBLE_OUTPUT_TYPES[output_type]
+  output_destination = output_destinations[output_type]
+  parameters[:class].send(:output, schedules, output_destination) unless parameters.nil?
+end
+
+
+# View
+settings.output_types.keys.each do |output_type|
+  if POSSIBLE_OUTPUT_TYPES.include? output_type
+    output_destination = output_destinations[output_type]
+    puts "(#{output_type}) Écriture des résultats dans: ".green + output_destination.yellow
+  else
+    puts "Le type '#{output_type}' n'existe pas. Ignorant le type.".red
+  end
+end

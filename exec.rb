@@ -13,38 +13,38 @@ require_relative 'app/schedule_finder'
 require_relative 'app/printers/list_schedule_printer'
 require_relative 'app/printers/calendar_schedule_printer'
 require_relative 'app/printers/html_schedule_printer'
+require_relative 'app/views/landing_view'
+require_relative 'app/views/input_view'
+require_relative 'app/views/output_view'
 
-puts "* * * * * * * * * * * * * * * * * * *".blue
-puts "*                                   *".blue
-puts "*   Calculateur d'horaire à l'ÉTS   *".blue
-puts "*                                   *".blue
-puts "* * * * * * * * * * * * * * * * * * *".blue
-puts ""
+POSSIBLE_OUTPUT_TYPES = {
+  'list' => {
+    class: ListSchedulePrinter,
+    output_destination_key: 'output_file'
+  },
+  'calendar' => {
+    class: CalendarSchedulePrinter,
+    output_destination_key: 'output_file'
+  },
+  'html' => {
+    class: HtmlSchedulePrinter,
+    output_destination_key: 'output_folder'
+  },
+}
 
-def input_view
-  puts "Veuillez rentrer le ficher de configuration:".light_blue
-
-  instance_variables = yield
-
-  if instance_variables[:file_exists]
-    puts ""
-    puts "Utilisation du fichier: ".light_blue + instance_variables[:config_file_path].yellow
-    puts ""
-  else
-    puts "Fichier invalide: ".red + instance_variables[:config_file_path].yellow
-  end
-end
+LandingView.new.render
 
 config_file_path = nil
 AutoCompleteFolderContents.in_setup do
   file_exists = false
 
   while !file_exists
-    input_view do
-      config_file_path = readline
+    InputView.new.render do
+      config_file_path = AutoCompleteFolderContents.readline
       file_exists = !File.directory?(config_file_path) && File.exists?(config_file_path)
 
-      {config_file_path: config_file_path, file_exists: file_exists}
+      set :config_file_path, config_file_path
+      set :file_exists, file_exists
     end
   end
 end
@@ -66,21 +66,6 @@ CourseUtils.cleanup! courses
 
 schedules = ScheduleFinder.combinations_for(courses, settings.filters.courses_per_schedule)
 
-POSSIBLE_OUTPUT_TYPES = {
-  'list' => {
-    class: ListSchedulePrinter,
-    output_destination_key: 'output_file'
-  },
-  'calendar' => {
-    class: CalendarSchedulePrinter,
-    output_destination_key: 'output_file'
-  },
-  'html' => {
-    class: HtmlSchedulePrinter,
-    output_destination_key: 'output_folder'
-  },
-}
-
 # Controller
 output_destinations = {}
 settings.output_types.each_pair.collect do |output_type, output_settings|
@@ -99,12 +84,8 @@ settings.output_types.keys.each do |output_type|
   parameters[:class].send(:output, schedules, output_destination) unless parameters.nil?
 end
 
-# View
-settings.output_types.keys.each do |output_type|
-  if POSSIBLE_OUTPUT_TYPES.include? output_type
-    output_destination = output_destinations[output_type]
-    puts "(#{output_type}) Écriture des résultats dans: ".green + output_destination.yellow
-  else
-    puts "Le type '#{output_type}' n'existe pas. Ignorant le type.".red
-  end
-end
+OutputView.new({
+ output_types: settings.output_types.keys,
+ possible_output_types: POSSIBLE_OUTPUT_TYPES,
+ output_destinations: output_destinations
+}).render

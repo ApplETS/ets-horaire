@@ -2,7 +2,7 @@ require 'readline'
 
 class AutoCompleteFolderContents
   def self.readline
-    Readline.readline.chomp
+    Readline.readline('', true).chomp
   end
 
   def self.in_setup(&block)

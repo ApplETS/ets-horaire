@@ -3,6 +3,8 @@
 require 'yaml'
 require 'colorize'
 require 'settingslogic'
+
+require_relative 'app/cli/auto_complete_readline'
 require_relative 'app/utils/pdf_stream'
 require_relative 'app/utils/stream_course_builder'
 require_relative 'app/builders/course_builder'
@@ -20,15 +22,18 @@ puts "*********************************".blue
 puts ""
 
 file_exists = false
+config_file_path = nil
 while !file_exists
   puts "Veuillez rentrer le ficher de configuration:".light_blue
-  config_file_path = File.join(BASE_DIR, "#{gets.chomp}.yml")
+  AutoCompleteReadline.readline do |input|
+    config_file_path = File.join(BASE_DIR, input.chomp)
 
-  file_exists = File.exists?(config_file_path)
-  if file_exists
-    puts "Utilisation du fichier: ".light_blue + config_file_path.yellow
-  else
-    puts "Fichier invalide: ".red + config_file_path.yellow
+    file_exists = File.exists?(config_file_path)
+    if file_exists
+      puts "Utilisation du fichier: ".light_blue + config_file_path.yellow
+    else
+      puts "Fichier invalide: ".red + config_file_path.yellow
+    end
   end
 end
 

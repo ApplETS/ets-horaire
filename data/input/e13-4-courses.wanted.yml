@@ -1,0 +1,37 @@
+parameters:
+  input: data/horaire_logiciel_e13.pdf
+  courses_wanted:
+    - LOG515
+    - LOG530
+    - LOG540
+    - LOG670
+    - LOG710
+    - LOG720
+    - LOG735
+    - GTI745
+    - GTI770
+    - GTI785
+    - PHY335
+  filters:
+    maximum_courses_per_schedule: 4
+    minimum_courses_per_schedule: 4
+    courses_per_schedule: 4
+
+    maximum_number_of_credits: 12
+    minimum_number_of_credits: 12
+    number_of_credits: 12
+
+    time_offs:
+      monday:
+        - from 8:00 to 12:00
+        - from 18:00 to 22:00
+      friday:
+        - all day
+  output_folder: e13-4-cours
+  output_types:
+    list:
+      output_file: list_schedule
+    calendar:
+      output_file: calendar_schedule
+    html:
+      output_folder: html_schedule

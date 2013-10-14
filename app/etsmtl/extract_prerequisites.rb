@@ -9,6 +9,7 @@ class ExtractPrerequisites
     course_match = COURSES.match(prerequisites_text)
     course_names = extract_courses(course_match)
     relation_type = (prerequisites_text.include?('ou') ? :or : :and)
+
     courses = course_names.collect do |course_name|
       filtered_course_name = course_name.gsub('*', '')
       flag = (course_name[-1] == '*')

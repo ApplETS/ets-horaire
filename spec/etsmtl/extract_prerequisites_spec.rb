@@ -26,49 +26,63 @@ describe ExtractPrerequisites do
   include_context 'prerequisite parsing'
 
   context '(MAT145)' do
-    let!(:prerequisites) { { prerequisite: %w(MAT145) } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return MAT145 as a prerequisite') { should == and_relation }
+    it 'should return MAT145 as a prerequisite' do
+      mat145 = double
+      PrerequisiteCourse.should_receive(:new).once.with('mat145', :prerequisite).and_return mat145
+
+      courses = [mat145]
+
+      expected_prerequisites = double
+      PrerequisiteProfile.should_receive(:new).once.with(:all, courses).and_return expected_prerequisites
+
+      prerequisites_text = self.class.description
+      prerequisites = ExtractPrerequisites.from(prerequisites_text)
+      expected_prerequisites.should == prerequisites
+    end
+
+    #let!(:prerequisites) { { prerequisite: %w(MAT145) } }
+    #let!(:and_relation) { relation_double :and, prerequisites }
+    #it('should return MAT145 as a prerequisite') { should == and_relation }
   end
 
-  context '(CTN504*)' do
-    let!(:prerequisites) { { prerequisite_or_concurrent: %w(CTN504) } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return CTN504 as a prerequisite or a concurrent course') { should == and_relation }
-  end
-
-  context '(CTN308, MAT165)' do
-    let!(:prerequisites) { { prerequisite: %w(CTN308 MAT165) } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return CTN308 and MAT165 as prerequisites') { should == and_relation }
-  end
-
-  context '(CTN200,GIA400)' do
-    let!(:prerequisites) { { prerequisite: %w(CTN200 GIA400) } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return CTN200 and GIA400 as prerequisites') { should == and_relation }
-  end
-
-  context '(INF135, MEC329*)' do
-    let!(:prerequisites) { {
-        prerequisite: %w(INF135),
-        prerequisite_or_concurrent: %w(MEC329)
-    } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return INF135 as a prerequisite and MEC329 as a prerequisite or a concurrent course') { should == and_relation }
-  end
-
-  context '(MAT265, MEC222, MEC423)' do
-    let!(:prerequisites) { { prerequisite: %w(MAT265 MEC222 MEC423) } }
-    let!(:and_relation) { relation_double :and, prerequisites }
-    it('should return MAT265, MEC222 and MEC423 as prerequisites') { should == and_relation }
-  end
-
-  context '(PCC310 ou PCC317)' do
-    let!(:prerequisites) { { prerequisite: %w(PCC310 PCC317) } }
-    let!(:or_relation) { relation_double :or, prerequisites }
-    it('should return PCC310 or PCC317 as a prerequisite') { should == or_relation }
-  end
+  #context '(CTN504*)' do
+  #  let!(:prerequisites) { { prerequisite_or_concurrent: %w(CTN504) } }
+  #  let!(:and_relation) { relation_double :and, prerequisites }
+  #  it('should return CTN504 as a prerequisite or a concurrent course') { should == and_relation }
+  #end
+  #
+  #context '(CTN308, MAT165)' do
+  #  let!(:prerequisites) { { prerequisite: %w(CTN308 MAT165) } }
+  #  let!(:and_relation) { relation_double :and, prerequisites }
+  #  it('should return CTN308 and MAT165 as prerequisites') { should == and_relation }
+  #end
+  #
+  #context '(CTN200,GIA400)' do
+  #  let!(:prerequisites) { { prerequisite: %w(CTN200 GIA400) } }
+  #  let!(:and_relation) { relation_double :and, prerequisites }
+  #  it('should return CTN200 and GIA400 as prerequisites') { should == and_relation }
+  #end
+  #
+  #context '(INF135, MEC329*)' do
+  #  let!(:prerequisites) { {
+  #      prerequisite: %w(INF135),
+  #      prerequisite_or_concurrent: %w(MEC329)
+  #  } }
+  #  let!(:and_relation) { relation_double :and, prerequisites }
+  #  it('should return INF135 as a prerequisite and MEC329 as a prerequisite or a concurrent course') { should == and_relation }
+  #end
+  #
+  #context '(MAT265, MEC222, MEC423)' do
+  #  let!(:prerequisites) { { prerequisite: %w(MAT265 MEC222 MEC423) } }
+  #  let!(:and_relation) { relation_double :and, prerequisites }
+  #  it('should return MAT265, MEC222 and MEC423 as prerequisites') { should == and_relation }
+  #end
+  #
+  #context '(PCC310 ou PCC317)' do
+  #  let!(:prerequisites) { { prerequisite: %w(PCC310 PCC317) } }
+  #  let!(:or_relation) { relation_double :or, prerequisites }
+  #  it('should return PCC310 or PCC317 as a prerequisite') { should == or_relation }
+  #end
 
   context '(GPA205, sauf profil P)' do
   end

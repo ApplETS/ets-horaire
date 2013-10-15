@@ -4,7 +4,7 @@ require 'colorize'
 require_relative '../view'
 
 class LandingView < View
-  def render
+  def index
     puts "* * * * * * * * * * * * * * * * * * *".blue
     puts "*                                   *".blue
     puts "*   Calculateur d'horaire à l'ÉTS   *".blue

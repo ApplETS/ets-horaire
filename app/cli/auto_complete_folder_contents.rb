@@ -5,7 +5,7 @@ class AutoCompleteFolderContents
     Readline.readline('', true).chomp
   end
 
-  def self.in_setup(&block)
+  def self.in_context(&block)
     @@autocomplete_proc ||= initialize_autocomplete_proc
 
     completion_append_character = Readline.completion_append_character

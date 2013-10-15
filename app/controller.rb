@@ -8,7 +8,7 @@ class Controller
     @flash = {}
   end
 
-  def go_to(controller_method, controller_name = nil, params = {})
+  def redirect_to(controller_method, controller_name = nil, params = {})
     @render_view = false
     controller = (controller_name.nil? ? self : @controllers[controller_name.to_s])
     controller.execute controller_method, params

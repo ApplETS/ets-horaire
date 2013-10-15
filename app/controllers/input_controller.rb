@@ -10,11 +10,11 @@ class InputController < Controller
     config_file_path = params['config_file_path']
     file_exists = !File.directory?(config_file_path) && File.exists?(config_file_path)
 
-    if !file_exists
+    if file_exists
+      redirect_to :index, :output, { config_file_path: config_file_path }
+    else
       flash[:notice] = "Fichier invalide: ".red + config_file_path.yellow
       render 'index'
-    else
-      go_to :index, :output, { config_file_path: config_file_path }
     end
   end
 end

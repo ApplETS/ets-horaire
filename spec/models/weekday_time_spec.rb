@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/models/weekday"
-require_relative "../../app/models/weekday_time"
+require 'spec_helper'
+
 
 describe WeekdayTime do
   describe "When creating a weekday time on friday" do

@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "support/matchers/combination_matchers"
-require_relative "../app/conditional_combinator"
+require 'spec_helper'
 
 describe ConditionalCombinator do
 

@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/models/period"
-require_relative "../../app/models/course"
-require_relative "../../app/models/group"
+require 'spec_helper'
 
 describe Course do
 

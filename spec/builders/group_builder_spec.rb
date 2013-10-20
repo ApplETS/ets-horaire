@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/builders/group_builder"
+require 'spec_helper'
 
 GroupStruct = Struct.new(:nb, :periods) unless defined?(GroupStruct)
 PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) unless defined?(PeriodStruct)

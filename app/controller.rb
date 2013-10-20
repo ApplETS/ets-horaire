@@ -29,7 +29,7 @@ class Controller
 
     class_name = self.class.name.sub('Controller', '')
     view_name = "#{class_name}View"
-    view = Kernel.const_get(view_name)
+    view = Module.const_get(view_name)
     view.new(self, instance_variables_hash, @flash).send(method_name, &block)
   end
 

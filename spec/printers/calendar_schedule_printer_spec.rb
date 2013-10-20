@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/printers/calendar_schedule_printer"
-require_relative "../../app/models/period"
+require 'spec_helper'
 
 CourseGroupStruct = Struct.new(:course_name, :nb, :periods) unless defined?(CourseGroupStruct)
 

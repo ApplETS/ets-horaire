@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/models/weekday_time"
-require_relative "../../app/models/weekday"
-require_relative "../../app/models/period"
+require 'spec_helper'
 
 describe Period do
 

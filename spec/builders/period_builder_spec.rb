@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/builders/period_builder"
+require 'spec_helper'
 
 PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) unless defined?(PeriodStruct)
 SHORT_WEEKDAY_FR = %w(lun mar mer jeu ven sam dim) unless defined?(SHORT_WEEKDAY_FR)

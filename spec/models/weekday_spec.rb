@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/models/weekday"
+require 'spec_helper'
 
 EN_WEEKDAYS = %w(monday tuesday wednesday thursday friday saturday sunday) unless defined?(EN_WEEKDAYS)
 FR_WEEKDAYS = %w(lundi mardi mercredi jeudi vendredi samedi dimanche) unless defined?(FR_WEEKDAYS)

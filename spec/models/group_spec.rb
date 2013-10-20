@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/models/group"
+require 'spec_helper'
 
 describe Group do
 

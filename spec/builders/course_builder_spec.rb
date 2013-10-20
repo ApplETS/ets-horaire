@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
-require_relative "../../app/builders/course_builder"
+
+require 'spec_helper'
 
 CourseStruct = Struct.new(:name, :groups) unless defined?(CourseStruct)
 GroupStruct = Struct.new(:nb, :periods) unless defined?(GroupStruct)

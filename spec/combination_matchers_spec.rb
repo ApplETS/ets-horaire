@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative "support/matchers/combination_matchers"
+require 'spec_helper'
 
 describe "support/matchers/combination_matchers" do
 

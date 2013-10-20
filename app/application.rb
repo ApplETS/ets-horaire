@@ -1,7 +1,4 @@
 # -*- encoding : utf-8 -*-
-require_relative '../app/controllers/input_controller'
-require_relative '../app/controllers/landing_controller'
-require_relative '../app/controllers/output_controller'
 
 class Application
   def run(controller_name, controller_method)

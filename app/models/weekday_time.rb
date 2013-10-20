@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class WeekdayTime
 
   MINUTES_PER_HOUR = 60

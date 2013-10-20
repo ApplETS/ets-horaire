@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class HtmlContext
 
   def initialize(weekdays, hours, schedule)

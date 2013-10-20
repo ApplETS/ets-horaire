@@ -1,5 +1,4 @@
 # -*- encoding : utf-8 -*-
-require_relative 'line_matcber'
 
 class StreamCourseBuilder
 
@@ -13,9 +12,9 @@ class StreamCourseBuilder
 		group = nil
 
     stream.each do |line|
-			course_match_data = LineMatcber.course(line)
-			group_match_data = LineMatcber.group(line)
-			period_match_data = LineMatcber.period(line)
+			course_match_data = LineMatcher.course(line)
+			group_match_data = LineMatcher.group(line)
+			period_match_data = LineMatcher.period(line)
 
 			if course_line?(course_match_data)
 				course = CourseStruct.new(course_match_data[1], [])

@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
-
 require 'colorize'
-require_relative '../view'
 
 class OutputView < View
   def index

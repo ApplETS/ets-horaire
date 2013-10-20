@@ -1,16 +1,7 @@
 # -*- encoding : utf-8 -*-
-require 'settingslogic'
 
-require_relative '../controller'
-require_relative '../views/output_view'
-require_relative '../printers/list_schedule_printer'
-require_relative '../printers/calendar_schedule_printer'
-require_relative '../printers/html_schedule_printer'
-require_relative '../utils/pdf_stream'
-require_relative '../utils/stream_course_builder'
-require_relative '../builders/course_builder'
-require_relative '../utils/course_utils'
-require_relative '../schedule_finder'
+require 'fileutils'
+require 'settingslogic'
 
 class OutputController < Controller
   POSSIBLE_OUTPUT_TYPES = {

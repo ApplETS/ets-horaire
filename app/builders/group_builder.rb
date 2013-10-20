@@ -1,6 +1,4 @@
 # -*- encoding : utf-8 -*-
-require_relative "../builders/period_builder"
-require_relative "../models/group"
 
 class GroupBuilder
 

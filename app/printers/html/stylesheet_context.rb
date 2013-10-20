@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class StylesheetContext
 
   COLUMN_WIDTH = 150

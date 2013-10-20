@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-class Group
 
+class Group
   attr_reader :nb, :periods
 
   def initialize(nb)
@@ -12,5 +12,4 @@ class Group
     @periods = periods
     self
   end
-
 end

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class Controller
   IGNORE_INSTANCE_VARIABLES = %w(@params @flash @controllers)
 

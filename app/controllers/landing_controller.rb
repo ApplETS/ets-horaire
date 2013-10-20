@@ -1,6 +1,4 @@
 # -*- encoding : utf-8 -*-
-require_relative '../controller'
-require_relative '../views/landing_view'
 
 class LandingController < Controller
   def index

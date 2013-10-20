@@ -1,13 +1,10 @@
 # -*- encoding : utf-8 -*-
+
 require "erb"
 require "compass"
 require "haml"
-require_relative "../../models/weekday"
-require_relative "stylesheet_context"
-require_relative "html_context"
 
 class WebpageBuilder
-
   HOURS = (8..23)
 
   WeekdayStruct = Struct.new(:name, :periods)

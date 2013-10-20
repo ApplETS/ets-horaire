@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class ConditionalCombinator
   class << self
     def find_combinations(values, set_size, &block)

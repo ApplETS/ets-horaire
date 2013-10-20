@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 require 'colorize'
-require_relative '../view'
 
 class LandingView < View
   def index

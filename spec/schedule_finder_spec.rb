@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "support/matchers/conceptual_model_matchers"
 require_relative "../app/schedule_finder"
 require_relative "../app/models/course"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "weekday_time"
 require_relative "weekday"
 

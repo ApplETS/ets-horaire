@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CalendarSchedulePrinter
 
   COLUMN_WIDTH = 16

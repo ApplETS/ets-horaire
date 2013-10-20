@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/builders/period_builder"
 
 PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) unless defined?(PeriodStruct)

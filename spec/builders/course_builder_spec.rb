@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/builders/course_builder"
 
 CourseStruct = Struct.new(:name, :groups) unless defined?(CourseStruct)

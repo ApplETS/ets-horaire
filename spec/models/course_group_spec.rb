@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/models/period"
 require_relative "../../app/models/course_group"
 

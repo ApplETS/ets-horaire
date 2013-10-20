@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative 'cli/auto_complete_folder_contents'
 
 class View

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/builders/group_builder"
 
 GroupStruct = Struct.new(:nb, :periods) unless defined?(GroupStruct)

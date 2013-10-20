@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PdfStream
 
   def self.from_file(pdf_path)

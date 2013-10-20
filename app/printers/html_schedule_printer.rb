@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "haml"
 require_relative "html/webpage_builder"
 

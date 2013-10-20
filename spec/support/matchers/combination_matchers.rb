@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 RSpec::Matchers.define :match_arrays do |*expected_arrays|
   match do |actual_arrays|
     expected_arrays_duplicate = expected_arrays.dup

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Course
 
   attr_reader :name, :groups

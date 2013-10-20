@@ -6,6 +6,7 @@ gem 'compass'
 gem 'sass'
 gem 'colorize'
 gem 'settingslogic'
+gem 'magic_encoding'
 
 group :development do
   gem 'guard'

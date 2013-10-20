@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CourseUtils
 
   def self.cleanup!(courses)

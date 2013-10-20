@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Group
 
   attr_reader :nb, :periods

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 RSpec::Matchers.define :conceptually_include do |*expected_groups|
   match do |schedules|
     schedules.one? do |actual_groups|

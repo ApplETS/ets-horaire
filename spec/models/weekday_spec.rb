@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/models/weekday"
 
 EN_WEEKDAYS = %w(monday tuesday wednesday thursday friday saturday sunday) unless defined?(EN_WEEKDAYS)

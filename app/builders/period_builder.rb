@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../models/period"
 require_relative "../models/weekday"
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'colorize'
 require_relative '../controller'
 require_relative '../views/input_view'

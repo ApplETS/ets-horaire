@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../builders/group_builder"
 require_relative "../models/course"
 

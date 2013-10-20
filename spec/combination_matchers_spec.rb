@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "support/matchers/combination_matchers"
 
 describe "support/matchers/combination_matchers" do

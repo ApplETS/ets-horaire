@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "../../app/printers/calendar_schedule_printer"
 require_relative "../../app/models/period"
 

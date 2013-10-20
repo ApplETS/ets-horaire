@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require_relative "conditional_combinator"
 require_relative "models/course_group"
 

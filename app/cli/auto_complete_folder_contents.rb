@@ -11,7 +11,7 @@ class AutoCompleteFolderContents
     @@autocomplete_proc ||= initialize_autocomplete_proc
 
     completion_append_character = Readline.completion_append_character
-    completion_proc = Readline.completion_proc
+    completion_proc = Readline.completion_proc || Proc.new {}
 
     Readline.completion_append_character = ''
     Readline.completion_proc = @@autocomplete_proc

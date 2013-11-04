@@ -2,7 +2,7 @@
 Programme qui calcule toutes les combinaisons possibles de cours à l'ÉTS, selon un fichier .pdf
 
 ## Utilisation
-Modifiez le run.rb et roulez le!
+Créez un fichier de configuration (exemple dans config/data/e13-4-courses.yml)
 
 ## TODO:
 1. Pouvoir partir le programme en ligne de commande et:

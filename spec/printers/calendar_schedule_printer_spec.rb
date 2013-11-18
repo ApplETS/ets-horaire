@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-CourseGroupStruct = Struct.new(:course_name, :nb, :periods) unless defined?(CourseGroupStruct)
-
 describe CalendarSchedulePrinter do
-  let(:stream) { mock(Object) }
+  CourseGroupStruct = Struct.new(:course_name, :nb, :periods)
+
+  let(:stream) { double("Stream") }
 
   before(:each) do
     File.stub(:open).with("output_file", "w").and_yield stream
@@ -40,7 +40,7 @@ describe CalendarSchedulePrinter do
   end
 
   describe "when printing a schedule with a GIA400 course, in group 2, from 8:00 to 11:00, on monday" do
-    let(:course) { Period.on("monday").of_type("Cours").from("8:00").to("11:00") }
+    let(:course) { Period.new(Weekday.en("monday"), "Cours", WeekdayTime.on(Weekday.en("monday")).at(8, 00), WeekdayTime.on(Weekday.en("monday")).at(11, 00)) }
     let(:group) { CourseGroupStruct.new "GIA400", 2, [course] }
     let(:schedule) { [group] }
 
@@ -65,7 +65,7 @@ describe CalendarSchedulePrinter do
   end
 
   describe "when printing a schedule with a LOG120 labcourse, in group 3, from 11:10 to 16:17, on thursday" do
-    let(:course) { Period.on("thursday").of_type("Labo").from("11:10").to("16:17") }
+    let(:course) { Period.new(Weekday.en("thursday"), "Labo", WeekdayTime.on(Weekday.en("thursday")).at(11, 10), WeekdayTime.on(Weekday.en("thursday")).at(16, 17)) }
     let(:group) { CourseGroupStruct.new "LOG120", 3, [course] }
     let(:schedule) { [group] }
 
@@ -90,21 +90,21 @@ describe CalendarSchedulePrinter do
   end
 
   describe "when printing a complicated schedule" do
-    let(:course_1_1) { Period.on("monday").of_type("Cours").from("13:30").to("17:00") }
-    let(:course_2_1) { Period.on("thursday").of_type("TP-Labo A").from("13:30").to("15:30") }
-    let(:course_3_1) { Period.on("thursday").of_type("TP-Labo B").from("15:30").to("17:00") }
+    let(:course_1_1) { Period.new(Weekday.en("monday"), "Cours", WeekdayTime.on(Weekday.en("monday")).at(13, 30), WeekdayTime.on(Weekday.en("monday")).at(17, 00)) }
+    let(:course_2_1) { Period.new(Weekday.en("thursday"), "TP-Labo A", WeekdayTime.on(Weekday.en("thursday")).at(13, 30), WeekdayTime.on(Weekday.en("thursday")).at(15, 30)) }
+    let(:course_3_1) { Period.new(Weekday.en("thursday"), "TP-Labo B", WeekdayTime.on(Weekday.en("thursday")).at(15, 30), WeekdayTime.on(Weekday.en("thursday")).at(17, 00)) }
     let(:group_1) { CourseGroupStruct.new "GIA601", 2, [course_1_1, course_2_1, course_3_1] }
 
-    let(:course_1_2) { Period.on("tuesday").of_type("Cours").from("8:45").to("12:15") }
-    let(:course_2_2) { Period.on("thursday").of_type("TP").from("8:30").to("10:30") }
+    let(:course_1_2) { Period.new(Weekday.en("tuesday"), "Cours", WeekdayTime.on(Weekday.en("tuesday")).at(8, 45), WeekdayTime.on(Weekday.en("tuesday")).at(12, 15)) }
+    let(:course_2_2) { Period.new(Weekday.en("thursday"), "TP", WeekdayTime.on(Weekday.en("thursday")).at(8, 30), WeekdayTime.on(Weekday.en("thursday")).at(10, 30)) }
     let(:group_2) { CourseGroupStruct.new "GPE450", 1, [course_1_2, course_2_2] }
 
-    let(:course_1_3) { Period.on("wednesday").of_type("Cours").from("18:00").to("21:30") }
-    let(:course_2_3) { Period.on("monday").of_type("Labo").from("18:00").to("20:00") }
+    let(:course_1_3) { Period.new(Weekday.en("wednesday"), "Cours", WeekdayTime.on(Weekday.en("wednesday")).at(18, 00), WeekdayTime.on(Weekday.en("wednesday")).at(21, 30)) }
+    let(:course_2_3) { Period.new(Weekday.en("monday"), "Labo", WeekdayTime.on(Weekday.en("monday")).at(18, 00), WeekdayTime.on(Weekday.en("monday")).at(20, 00)) }
     let(:group_3) { CourseGroupStruct.new "LOG550", 1, [course_1_3, course_2_3] }
 
-    let(:course_1_4) { Period.on("thursday").of_type("Cours").from("18:00").to("21:30") }
-    let(:course_2_4) { Period.on("tuesday").of_type("TP/Labo").from("18:00").to("20:00") }
+    let(:course_1_4) { Period.new(Weekday.en("thursday"), "Cours", WeekdayTime.on(Weekday.en("thursday")).at(18, 00), WeekdayTime.on(Weekday.en("thursday")).at(21, 30)) }
+    let(:course_2_4) { Period.new(Weekday.en("tuesday"), "TP/Labo", WeekdayTime.on(Weekday.en("tuesday")).at(18, 00), WeekdayTime.on(Weekday.en("tuesday")).at(20, 00)) }
     let(:group_4) { CourseGroupStruct.new "LOG619", 1, [course_1_4, course_2_4] }
 
     let(:schedule) { [group_1, group_2, group_3, group_4] }

@@ -4,8 +4,8 @@ class CourseGroup < Group
 
   attr_reader :course_name
 
-  def initialize(course_name, group_nb)
-    super group_nb
+  def initialize(course_name, periods, group_nb)
+    super group_nb, periods
     @course_name = course_name
   end
 

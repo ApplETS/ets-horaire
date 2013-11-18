@@ -2,92 +2,78 @@
 require 'spec_helper'
 
 describe Period do
+  describe "When creating a Lab on friday" do
+    let(:friday) { double(Weekday) }
+    let(:start_time) { double(WeekdayTime) }
+    let(:end_time) { double(WeekdayTime) }
+    let(:lab) { Period.new(friday, "Lab", start_time, end_time) }
 
-  describe "When creating a course on monday" do
-    let!(:monday) { Weekday.en "monday"}
-    before(:each) { Weekday.should_receive(:en).with("monday").and_return(monday) }
-    let(:monday_period) { Period::on "monday" }
-
-    specify { monday_period.weekday.should == monday }
-    specify { monday_period.type.should be_nil }
-    specify { monday_period.start_time.should be_nil }
-    specify { monday_period.end_time.should be_nil }
-    specify { monday_period.duration.should == 0 }
+    specify { lab.weekday.should eq(friday) }
+    specify { lab.type.should eq("Lab") }
+    specify { lab.start_time.should eq(start_time) }
+    specify { lab.end_time.should eq(end_time) }
   end
 
-  describe "When creating a TP on tuesday" do
-    let!(:tuesday) { Weekday.en "tuesday"}
-    before(:each) { Weekday.should_receive(:en).with("tuesday").and_return(tuesday) }
-    let(:tuesday_tp) { Period::on("tuesday").of_type("TP") }
+  describe :duration do
+    let(:monday) { double(Weekday) }
+    let(:start_time) { double(WeekdayTime, to_weekday_i: 200) }
+    let(:end_time) { double(WeekdayTime, to_weekday_i: 750) }
+    let(:cours) { Period.new(monday, "Cours", start_time, end_time) }
 
-    specify { tuesday_tp.weekday.should == tuesday }
-    specify { tuesday_tp.type.should == "TP" }
-    specify { tuesday_tp.start_time.should be_nil }
-    specify { tuesday_tp.end_time.should be_nil }
-    specify { tuesday_tp.duration.should == 0 }
+    specify { cours.duration.should eq(550) }
   end
 
-  describe "When creating a Lab on friday from 5h45 to 13h55" do
-    let!(:friday) { Weekday.en "friday"}
-    let!(:start_time) { WeekdayTime.on(friday).at(5, 45) }
-    let!(:end_time) { WeekdayTime.on(friday).at(13, 55) }
-
-    before(:each) do
-      Weekday.stub(:en).with("friday").and_return(friday)
-
-      WeekdayTime.should_receive(:on).with(friday).and_return(start_time)
-      start_time.should_receive(:at).with(5, 45).and_return(start_time)
-
-      WeekdayTime.should_receive(:on).with(friday).and_return(end_time)
-      end_time.should_receive(:at).with(13, 55).and_return(end_time)
-    end
-
-    let(:friday_lab) { Period::on("friday").of_type("Lab").from("5:45").to("13:55") }
-
-    specify { friday_lab.weekday.should == friday }
-    specify { friday_lab.type.should == "Lab" }
-    specify { friday_lab.start_time.should == start_time }
-    specify { friday_lab.end_time.should == end_time }
-    specify { friday_lab.duration.should == 490 }
-  end
-
-  describe "When creating a Cours on wednesday from 6h01 to 6h00" do
-    let(:course) { Period::on("wednesday").of_type("Cours").from("6:01").to("6:00") }
-    specify { expect { course }.to raise_error "the 'to' method must be called after the 'from' method and be bigger than the latter." }
-  end
-
-  describe "When checking for a conflict in a course" do
-
+  describe :conflicts? do
     describe "When comparing two periods one before the other" do
-      let(:first_period) { Period::on("monday").of_type("Cours").from("9:00").to("12:00") }
-      let(:second_period) { Period::on("monday").of_type("Lab").from("13:00").to("17:00") }
+      let(:tuesday) { double(Weekday) }
 
-      it "should not conflict" do
-        first_period.conflicts?(second_period).should == false
-        second_period.conflicts?(first_period).should == false
+      let(:first_period_start_time) { double(WeekdayTime, to_week_i: 200) }
+      let(:first_period_end_time) { double(WeekdayTime, to_week_i: 500) }
+      let(:first_period) { Period.new(tuesday, "Cours", first_period_start_time, first_period_end_time) }
+
+      let(:second_period_start_time) { double(WeekdayTime, to_week_i: 550) }
+      let(:second_period_end_time) { double(WeekdayTime, to_week_i: 1250) }
+      let(:second_period) { Period.new(tuesday, "Cours", second_period_start_time, second_period_end_time) }
+
+      specify do
+        first_period.conflicts?(second_period).should be_false
+        second_period.conflicts?(first_period).should be_false
       end
     end
 
     describe "When comparing two intersecting periods" do
-      let(:first_period) { Period::on("monday").of_type("TP").from("9:00").to("12:00") }
-      let(:second_period) { Period::on("monday").of_type("Lab").from("11:00").to("17:00") }
+      let(:tuesday) { double(Weekday) }
 
-      it "should conflict" do
-        first_period.conflicts?(second_period).should == true
-        second_period.conflicts?(first_period).should == true
+      let(:first_period_start_time) { double(WeekdayTime, to_week_i: 0) }
+      let(:first_period_end_time) { double(WeekdayTime, to_week_i: 1000) }
+      let(:first_period) { Period.new(tuesday, "Cours", first_period_start_time, first_period_end_time) }
+
+      let(:second_period_start_time) { double(WeekdayTime, to_week_i: 500) }
+      let(:second_period_end_time) { double(WeekdayTime, to_week_i: 1500) }
+      let(:second_period) { Period.new(tuesday, "Cours", second_period_start_time, second_period_end_time) }
+
+      specify do
+        first_period.conflicts?(second_period).should be_true
+        second_period.conflicts?(first_period).should be_true
       end
     end
 
     describe "When comparing one period contained in another" do
-      let(:internal_period) { Period::on("friday").of_type("TP").from("11:00").to("19:00") }
-      let(:external_period) { Period::on("friday").of_type("Lab").from("8:00").to("23:00") }
+      let(:tuesday) { double(Weekday) }
 
-      it "should conflict" do
-        internal_period.conflicts?(external_period).should == true
-        external_period.conflicts?(internal_period).should == true
+      let(:first_period_start_time) { double(WeekdayTime, to_week_i: 0) }
+      let(:first_period_end_time) { double(WeekdayTime, to_week_i: 1500) }
+      let(:external_period) { Period.new(tuesday, "Cours", first_period_start_time, first_period_end_time) }
+
+      let(:second_period_start_time) { double(WeekdayTime, to_week_i: 500) }
+      let(:second_period_end_time) { double(WeekdayTime, to_week_i: 1000) }
+      let(:internal_period) { Period.new(tuesday, "Cours", second_period_start_time, second_period_end_time) }
+
+      specify do
+        external_period.conflicts?(internal_period).should be_true
+        internal_period.conflicts?(external_period).should be_true
       end
     end
-    
   end
 
 end

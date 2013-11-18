@@ -1,18 +1,13 @@
 # -*- encoding : utf-8 -*-
 
 class Course
-
   attr_reader :name, :groups
 
-  def initialize(name)
-    @name = name
-    @groups = []
-  end
-
-  def with(*groups)
+  def initialize(name, groups)
     raise "All of the group numbers must be unique." if !unique_group_nb?(groups)
+
+    @name = name
     @groups = groups
-    self
   end
 
   private

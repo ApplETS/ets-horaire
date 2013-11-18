@@ -14,7 +14,7 @@ class ScheduleFinder
   def self.flatten(courses)
     periods = courses.collect do |course|
       course.groups.collect do |group|
-        CourseGroup.new(course.name, group.nb).with *group.periods
+        CourseGroup.new(course.name, group.periods, group.nb)
       end
     end
     periods.flatten

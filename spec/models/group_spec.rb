@@ -2,27 +2,12 @@
 require 'spec_helper'
 
 describe Group do
-
-  describe "when creating a simple group with no periods" do
-    let(:group) { Group.new(3) }
-
-    it "should keep its group number" do
-      group.nb.should == 3
-    end
-
-    it "should have no periods" do
-      group.periods.should be_empty
-    end
-  end
-
   describe "when creating a group with specific periods" do
-    let(:lecture) { mock Object }
-    let(:practical_work) { mock Object }
-    let(:group) { Group.new(1).with lecture, practical_work }
+    let(:lecture) { double(Period) }
+    let(:practical_work) { double(Period) }
+    let(:group) { Group.new(3, [lecture, practical_work]) }
 
-    it "should return the appropriate periods" do
-      group.periods.should =~ [lecture, practical_work]
-    end
+    specify { group.nb.should eq(3) }
+    specify { group.periods.should =~ [lecture, practical_work] }
   end
-
 end

@@ -3,13 +3,8 @@
 class Group
   attr_reader :nb, :periods
 
-  def initialize(nb)
+  def initialize(nb, periods)
     @nb = nb
-    @periods = []
-  end
-
-  def with(*periods)
     @periods = periods
-    self
   end
 end

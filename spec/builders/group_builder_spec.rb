@@ -1,10 +1,9 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-GroupStruct = Struct.new(:nb, :periods) unless defined?(GroupStruct)
-PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type) unless defined?(PeriodStruct)
-
 describe GroupBuilder do
+  GroupStruct = Struct.new(:nb, :periods)
+  PeriodStruct = Struct.new(:weekday, :start_time, :end_time, :type)
 
   describe "when building a group with no periods" do
     let(:group_struct) { GroupStruct.new 6, [] }

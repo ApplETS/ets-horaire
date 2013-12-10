@@ -26,7 +26,7 @@ class PeriodBuilder
 
     def convert_to_weekday_time_using(weekday, plain_time)
       hour, minutes = time_split_int(plain_time)
-      @start_time = WeekdayTime.on(weekday).at(hour, minutes)
+      @start_time = WeekdayTime.new(weekday, hour, minutes)
     end
 
     def time_split_int(plain_time)

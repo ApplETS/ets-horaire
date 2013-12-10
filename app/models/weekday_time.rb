@@ -7,21 +7,12 @@ class WeekdayTime
 
   attr_reader :weekday, :hour, :minutes
 
-  def initialize(weekday)
+  def initialize(weekday, hour, minutes)
     @weekday = weekday
-    @week_time_int = @weekday.index * MINUTES_PER_DAY
-    @hour = @minutes = @weekday_time_int = 0
-  end
-
-  def self.on(weekday)
-    WeekdayTime.new(weekday)
-  end
-
-  def at(hour, minutes)
     @hour = hour
     @minutes = minutes
+    @week_time_int = @weekday.index * MINUTES_PER_DAY
     @weekday_time_int = hour * MINUTES_PER_HOUR + minutes
-    self
   end
 
   def to_weekday_i
